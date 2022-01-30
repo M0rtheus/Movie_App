@@ -27,7 +27,7 @@ public interface AppDAO {
     void deleteAllTitles();
 
     @Query("SELECT MAX(id) FROM " + DATABASE_TABLE_NAME)
-    int getMaxId();
+    int getMaxDBid();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertTitle(ListTitle listTitle);
