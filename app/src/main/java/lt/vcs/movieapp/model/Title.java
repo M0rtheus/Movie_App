@@ -4,8 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class Title {
 
+
+    private int id;
     @SerializedName("id")
-    private String id;
+    private String imDBid;
     @SerializedName("title")
     private String title;
     @SerializedName("year")
