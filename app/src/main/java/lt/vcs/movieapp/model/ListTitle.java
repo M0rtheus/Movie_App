@@ -1,6 +1,6 @@
 package lt.vcs.movieapp.model;
 
-import static lt.vcs.movieapp.utilities.Constants.DATABASE_NAME;
+import static lt.vcs.movieapp.utilities.Constants.DATABASE_TABLE_NAME;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = DATABASE_NAME)
+@Entity(tableName = DATABASE_TABLE_NAME)
 public class ListTitle {
 
     @PrimaryKey
