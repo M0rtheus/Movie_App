@@ -41,7 +41,4 @@ public class Title {
     @SerializedName("metacriticRating")
     private String metacriticRating;
 
-
-
-
 }

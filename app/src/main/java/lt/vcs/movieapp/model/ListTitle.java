@@ -2,7 +2,7 @@ package lt.vcs.movieapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class listTitle {
+public class ListTitle {
 
     @SerializedName("id")
     private String id;
