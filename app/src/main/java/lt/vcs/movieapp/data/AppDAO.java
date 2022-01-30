@@ -23,7 +23,7 @@ public interface AppDAO {
     @Query("DELETE FROM " + DATABASE_TABLE_NAME + " WHERE id =:id")
     void deleteTitle(int id);
 
-    @Query("DELETE FROM DATABASE_TABLE_NAME")
+    @Query("DELETE FROM " + DATABASE_TABLE_NAME)
     void deleteAllTitles();
 
     @Query("SELECT MAX(id) FROM " + DATABASE_TABLE_NAME)
