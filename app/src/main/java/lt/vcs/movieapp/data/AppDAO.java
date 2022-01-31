@@ -18,21 +18,21 @@ public interface AppDAO {
     List<Item> getAll();
 
     @Query("SELECT * FROM " + DATABASE_TABLE_NAME + " WHERE dbId =:dbId")
-    Item getTitle(int dbId);
+    Item getItem(int dbId);
 
     @Query("DELETE FROM " + DATABASE_TABLE_NAME + " WHERE dbId =:dbId")
-    void deleteTitle(int dbId);
+    void deleteItem(int dbId);
 
     @Query("DELETE FROM " + DATABASE_TABLE_NAME)
-    void deleteAllTitles();
+    void deleteAllItems();
 
     @Query("SELECT MAX(dbId) FROM " + DATABASE_TABLE_NAME)
     int getMaxId();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertTitle(Item item);
+    void insertItem(Item item);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertTitles(List<Item> titles);
+    void insertItems(List<Item> items);
 
 }
