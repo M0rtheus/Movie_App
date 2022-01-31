@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 
 import lt.vcs.movieapp.api.IMDBApi;
 import lt.vcs.movieapp.api.IMDBApiService;
+import lt.vcs.movieapp.model.ComingSoonResponse;
+import lt.vcs.movieapp.model.InTheatersResponse;
+import lt.vcs.movieapp.model.MostPopularResponse;
 import lt.vcs.movieapp.model.TitleResponse;
 import lt.vcs.movieapp.model.TopMoviesResponse;
 import retrofit2.Call;
@@ -36,7 +39,7 @@ public class RemoteRepository {
         call.enqueue(callback);
     }
 
-    public void getTopMovies(){
+    public void getTopMovies() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
         Call<TopMoviesResponse> call = service.getTopMovies();
         Callback<TopMoviesResponse> callback = new Callback<TopMoviesResponse>() {
@@ -48,6 +51,60 @@ public class RemoteRepository {
             @Override
             public void onFailure(@NonNull Call<TopMoviesResponse> call, Throwable t) {
                 Log.i(LOG_TAG, "Failed to retrieve data" + t.getMessage());
+                call.cancel();
+            }
+        };
+        call.enqueue(callback);
+    }
+
+    public void getMostPopular() {
+        IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
+        Call<MostPopularResponse> call = service.getMostPopular();
+        Callback<MostPopularResponse> callback = new Callback<MostPopularResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<MostPopularResponse> call, Response<MostPopularResponse> response) {
+                Log.i(LOG_TAG, "getMostPopular onResponse: " + response.body());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MostPopularResponse> call, Throwable t) {
+                Log.i(LOG_TAG, "getMostPopular Failed to retrieve data" + t.getMessage());
+                call.cancel();
+            }
+        };
+        call.enqueue(callback);
+    }
+
+    public void getInTheaters() {
+        IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
+        Call<InTheatersResponse> call = service.getInTheaters();
+        Callback<InTheatersResponse> callback = new Callback<InTheatersResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<InTheatersResponse> call, Response<InTheatersResponse> response) {
+                Log.i(LOG_TAG, "getInTheaters onResponse: " + response.body());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<InTheatersResponse> call, Throwable t) {
+                Log.i(LOG_TAG, "getInTheaters Failed to retrieve data" + t.getMessage());
+                call.cancel();
+            }
+        };
+        call.enqueue(callback);
+    }
+
+    public void getComingSoon() {
+        IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
+        Call<ComingSoonResponse> call = service.getComingSoon();
+        Callback<ComingSoonResponse> callback = new Callback<ComingSoonResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<ComingSoonResponse> call, Response<ComingSoonResponse> response) {
+                Log.i(LOG_TAG, "getComingSoon onResponse: " + response.body());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ComingSoonResponse> call, Throwable t) {
+                Log.i(LOG_TAG, "getComingSoon Failed to retrieve data" + t.getMessage());
                 call.cancel();
             }
         };
