@@ -17,16 +17,16 @@ public interface AppDAO {
     @Query("SELECT * FROM " + DATABASE_TABLE_NAME)
     List<ListTitle> getAll();
 
-    @Query("SELECT * FROM " + DATABASE_TABLE_NAME + " WHERE id =:id")
-    ListTitle getTitle(int id);
+    @Query("SELECT * FROM " + DATABASE_TABLE_NAME + " WHERE dbId =:dbId")
+    ListTitle getTitle(int dbId);
 
-    @Query("DELETE FROM " + DATABASE_TABLE_NAME + " WHERE id =:id")
-    void deleteTitle(int id);
+    @Query("DELETE FROM " + DATABASE_TABLE_NAME + " WHERE dbId =:dbId")
+    void deleteTitle(int dbId);
 
     @Query("DELETE FROM " + DATABASE_TABLE_NAME)
     void deleteAllTitles();
 
-    @Query("SELECT MAX(id) FROM " + DATABASE_TABLE_NAME)
+    @Query("SELECT MAX(dbId) FROM " + DATABASE_TABLE_NAME)
     int getMaxId();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

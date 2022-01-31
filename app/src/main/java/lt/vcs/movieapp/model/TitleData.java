@@ -2,10 +2,10 @@ package lt.vcs.movieapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Title {
+public class TitleData {
 
 
-    private int id;
+    private int dbId;
     @SerializedName("id")
     private String imDBid;
     @SerializedName("title")
@@ -43,4 +43,12 @@ public class Title {
     @SerializedName("metacriticRating")
     private String metacriticRating;
 
+    @Override
+    public String toString() {
+        return "Title{" +
+                "imDBid='" + imDBid + '\'' +
+                ", title='" + title + '\'' +
+                ", year=" + year +
+                '}';
+    }
 }

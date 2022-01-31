@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
 public class ListTitle {
 
     @PrimaryKey
-    private int id;
+    private int dbId;
     @SerializedName("id")
     @ColumnInfo
     private String imDBid;
@@ -38,8 +38,8 @@ public class ListTitle {
     @ColumnInfo
     private String imDbRatingCount;
 
-    public ListTitle(int id, String imDBid, long rank, long rankUpDown, String title, long year, String image, String imDbRating, String imDbRatingCount) {
-        this.id = id;
+    public ListTitle(int dbId, String imDBid, long rank, long rankUpDown, String title, long year, String image, String imDbRating, String imDbRatingCount) {
+        this.dbId = dbId;
         this.imDBid = imDBid;
         this.rank = rank;
         this.rankUpDown = rankUpDown;
@@ -50,12 +50,12 @@ public class ListTitle {
         this.imDbRatingCount = imDbRatingCount;
     }
 
-    public int getId() {
-        return id;
+    public int getDbId() {
+        return dbId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDbId(int id) {
+        this.dbId = id;
     }
 
     public String getImDBid() {
@@ -120,5 +120,20 @@ public class ListTitle {
 
     public void setImDbRatingCount(String imDbRatingCount) {
         this.imDbRatingCount = imDbRatingCount;
+    }
+
+    @Override
+    public String toString() {
+        return "ListTitle{" +
+                "dbId=" + dbId +
+                ", imDBid='" + imDBid + '\'' +
+                ", rank=" + rank +
+                ", rankUpDown=" + rankUpDown +
+                ", title='" + title + '\'' +
+                ", year=" + year +
+                ", image='" + image + '\'' +
+                ", imDbRating='" + imDbRating + '\'' +
+                ", imDbRatingCount='" + imDbRatingCount + '\'' +
+                '}';
     }
 }
