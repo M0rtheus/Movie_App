@@ -9,16 +9,16 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import lt.vcs.movieapp.model.ListTitle;
+import lt.vcs.movieapp.model.Item;
 
 @Dao
 public interface AppDAO {
 
     @Query("SELECT * FROM " + DATABASE_TABLE_NAME)
-    List<ListTitle> getAll();
+    List<Item> getAll();
 
     @Query("SELECT * FROM " + DATABASE_TABLE_NAME + " WHERE dbId =:dbId")
-    ListTitle getTitle(int dbId);
+    Item getTitle(int dbId);
 
     @Query("DELETE FROM " + DATABASE_TABLE_NAME + " WHERE dbId =:dbId")
     void deleteTitle(int dbId);
@@ -30,9 +30,9 @@ public interface AppDAO {
     int getMaxId();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertTitle(ListTitle listTitle);
+    void insertTitle(Item item);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertTitles(List<ListTitle> titles);
+    void insertTitles(List<Item> titles);
 
 }

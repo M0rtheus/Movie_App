@@ -9,10 +9,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import lt.vcs.movieapp.model.ListTitle;
+import lt.vcs.movieapp.model.Item;
 
 @Database(
-        entities = {ListTitle.class},
+        entities = {Item.class},
         version = DATABASE_VER,
         exportSchema = false
 )

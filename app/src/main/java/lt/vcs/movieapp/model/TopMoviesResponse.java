@@ -3,7 +3,7 @@ package lt.vcs.movieapp.model;
 import java.util.List;
 
 public class TopMoviesResponse {
-    private List<ListTitle> items;
+    private List<Item> items;
 
     @Override
     public String toString() {

@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 
 @Entity(tableName = DATABASE_TABLE_NAME)
-public class ListTitle {
+public class Item {
 
     @PrimaryKey
     private int dbId;
@@ -38,7 +38,7 @@ public class ListTitle {
     @ColumnInfo
     private String imDbRatingCount;
 
-    public ListTitle(int dbId, String imDBid, long rank, long rankUpDown, String title, long year, String image, String imDbRating, String imDbRatingCount) {
+    public Item(int dbId, String imDBid, long rank, long rankUpDown, String title, long year, String image, String imDbRating, String imDbRatingCount) {
         this.dbId = dbId;
         this.imDBid = imDBid;
         this.rank = rank;
