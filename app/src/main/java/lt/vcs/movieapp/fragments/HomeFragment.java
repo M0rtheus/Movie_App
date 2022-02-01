@@ -1,4 +1,4 @@
-package lt.vcs.movieapp;
+package lt.vcs.movieapp.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Collections;
 import java.util.List;
 
+import lt.vcs.movieapp.R;
 import lt.vcs.movieapp.adapters.TopMovieAdapter;
 import lt.vcs.movieapp.model.items.ItemTopMovies;
 import lt.vcs.movieapp.repository.RemoteRepository;
