@@ -1,14 +1,24 @@
 package lt.vcs.movieapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.MenuItem;
 
-import lt.vcs.movieapp.data.FavoriteItem;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 import lt.vcs.movieapp.repository.LocalRepository;
 import lt.vcs.movieapp.repository.RemoteRepository;
 
 public class MainActivity extends AppCompatActivity {
+
+    private BottomNavigationView bottomNavigationView;
+    private HomeFragment homeFragment = new HomeFragment();
+    private SearchFragment searchFragment = new SearchFragment();
+    private FavoritesFragment favoritesFragment = new FavoritesFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +34,36 @@ public class MainActivity extends AppCompatActivity {
         LocalRepository localRepository = new LocalRepository(getApplicationContext());
 //        localRepository.insertItem(new FavoriteItem(1,"tt11466222", "Jackass Forever", 2022, "https://m.media-amazon.", "10"));
 //        localRepository.deleteAllItems();
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(navListener);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new HomeFragment())
+                .commit();
     }
+
+    private NavigationBarView.OnItemSelectedListener navListener =
+            new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+                    switch (item.getItemId()) {
+                        case R.id.nav_home:
+                            selectedFragment = homeFragment;
+                            break;
+                        case R.id.nav_search:
+                            selectedFragment = searchFragment;
+                            break;
+                        case R.id.nav_favorites:
+                            selectedFragment = favoritesFragment;
+                    }
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragment_container, selectedFragment)
+                            .commit();
+                    return true;
+                }
+            };
 }
