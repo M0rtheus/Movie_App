@@ -5,20 +5,33 @@ import static lt.vcs.movieapp.utilities.Constants.LOG_TAG;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import java.util.List;
 
 import lt.vcs.movieapp.api.IMDBApi;
 import lt.vcs.movieapp.api.IMDBApiService;
+import lt.vcs.movieapp.model.items.ItemTopMovies;
 import lt.vcs.movieapp.model.responses.ComingSoonResponse;
 import lt.vcs.movieapp.model.responses.InTheatersResponse;
 import lt.vcs.movieapp.model.responses.MostPopularResponse;
 import lt.vcs.movieapp.model.responses.TitleResponse;
 import lt.vcs.movieapp.model.responses.TopMoviesResponse;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RemoteRepository {
+
+    private MutableLiveData<List<ItemTopMovies>> topMovies;
+
+    public LiveData<List<ItemTopMovies>> getMovies(){
+        if (topMovies == null){
+            topMovies = new MutableLiveData<List<ItemTopMovies>>();
+        }
+        return topMovies;
+    }
 
     public void getTitle() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
@@ -47,6 +60,7 @@ public class RemoteRepository {
             @Override
             public void onResponse(@NonNull Call<TopMoviesResponse> call, Response<TopMoviesResponse> response) {
                 Log.i(LOG_TAG, "TopMoviesResponse: " + response.body());
+                topMovies.postValue(response.body().getItems());
             }
 
             @Override
@@ -56,6 +70,7 @@ public class RemoteRepository {
             }
         };
         call.enqueue(callback);
+
     }
 
     public void getComingSoon() {

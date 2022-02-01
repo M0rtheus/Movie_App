@@ -18,6 +18,30 @@ public class ItemTopMovies {
     @SerializedName("imDbRating")
     private String imDbRating;
 
+    public String getId() {
+        return id;
+    }
+
+    public long getRank() {
+        return rank;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public long getYear() {
+        return year;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getImDbRating() {
+        return imDbRating;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
