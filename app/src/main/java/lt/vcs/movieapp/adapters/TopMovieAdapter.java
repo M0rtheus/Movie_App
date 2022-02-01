@@ -41,7 +41,12 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.ViewHo
                 .load(list.get(position).getImage())
                 .into(holder.imageView);
 
-        holder.titleTextView.setText(list.get(position).getTitle());
+        if (list.get(position).getTitle().length() < 25){
+            holder.titleTextView.setText(list.get(position).getTitle());
+        } else {
+            holder.titleTextView.setText(list.get(position).getTitle().substring(0,25) + "...");
+        }
+
         holder.scoreTextView.setText("IMDB Score: " + list.get(position).getImDbRating());
     }
 
