@@ -52,7 +52,6 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        Log.i("app_test", "getItemCount: " + list);
         return list.size();
     }
 
