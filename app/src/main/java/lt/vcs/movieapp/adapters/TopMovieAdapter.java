@@ -41,13 +41,14 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.ViewHo
                 .load(list.get(position).getImage())
                 .into(holder.imageView);
 
+        holder.rankTextView.setText("Rank: " + list.get(position).getRank());
+        holder.scoreTextView.setText("IMDB Score: " + list.get(position).getImDbRating());
+
         if (list.get(position).getTitle().length() < 25){
             holder.titleTextView.setText(list.get(position).getTitle());
         } else {
             holder.titleTextView.setText(list.get(position).getTitle().substring(0,25) + "...");
         }
-
-        holder.scoreTextView.setText("IMDB Score: " + list.get(position).getImDbRating());
     }
 
     @Override
@@ -60,12 +61,14 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.ViewHo
         ImageView imageView;
         TextView titleTextView;
         TextView scoreTextView;
+        TextView rankTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.topMovieImageView);
-            titleTextView = itemView.findViewById(R.id.topMovieTitleTextView);
+            rankTextView = itemView.findViewById(R.id.topMovieRankTextView);
             scoreTextView = itemView.findViewById(R.id.topMovieIMDBScoreTextView);
+            titleTextView = itemView.findViewById(R.id.topMovieTitleTextView);
         }
 
         @Override

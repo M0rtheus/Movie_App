@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="300dp"
+    android:layout_height="350dp"
     app:cardElevation="10dp"
     app:cardCornerRadius="20dp"
     android:layout_margin="10dp"
@@ -23,17 +23,17 @@
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/topMovieTitleTextView"
+            app:layout_constraintBottom_toTopOf="@+id/topMovieRankTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/topMovieTitleTextView"
+            android:id="@+id/topMovieRankTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Dark Knight"
+            android:text="Rank: 1"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/topMovieIMDBScoreTextView"
             app:layout_constraintStart_toStartOf="@+id/topMovieImageView" />
@@ -46,8 +46,21 @@
             android:layout_marginBottom="8dp"
             android:text="IMDB: 10"
             android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/topMovieTitleTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/topMovieTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Movie Title"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
