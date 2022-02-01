@@ -9,17 +9,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import lt.vcs.movieapp.model.Item;
-
 @Database(
-        entities = {Item.class},
+        entities = {FavoriteItem.class},
         version = DATABASE_VER,
         exportSchema = false
 )
 
 public abstract class AppDatabase extends RoomDatabase {
 
-    public abstract AppDAO appDao();
+    public abstract FavoriteItemDAO favoriteItemDAO();
 
 
     private static AppDatabase instance;
