@@ -10,15 +10,18 @@ import lt.vcs.movieapp.model.items.ItemTopMovies;
 import lt.vcs.movieapp.repository.RemoteRepository;
 
 public class HomeFragmentViewModel extends ViewModel {
-
+    private LiveData<List<ItemTopMovies>> topMovies;
     private RemoteRepository remoteRepository;
 
-    public LiveData<List<ItemTopMovies>> getMovies(){
-        return remoteRepository.getMovies();
+    public HomeFragmentViewModel() {
+        this.remoteRepository = new RemoteRepository();
     }
 
-    public void callGetMovies(){
-        remoteRepository.getTopMovies();
+    public LiveData<List<ItemTopMovies>> getMovies(){
+        if (topMovies == null){
+            topMovies = remoteRepository.getTopMovies();
+        }
+        return topMovies;
     }
 
 }

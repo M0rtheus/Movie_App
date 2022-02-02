@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,8 +25,8 @@ import lt.vcs.movieapp.viewmodels.HomeFragmentViewModel;
 public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private TopMovieAdapter topMovieAdapter;
-    private List<ItemTopMovies> list = Collections.emptyList();
+    private HomeFragmentViewModel viewModel;
+    private LiveData<List<ItemTopMovies>> list;
 
     public HomeFragment() {
 
@@ -39,17 +41,15 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        Log.i("app_test", "onCreateView: " + list);
-        RemoteRepository remoteRepository = new RemoteRepository();
-        remoteRepository.getTopMovies();
-        remoteRepository.getMovies().observe(getViewLifecycleOwner(), new Observer<List<ItemTopMovies>>() {
+        viewModel = new ViewModelProvider(this).get(HomeFragmentViewModel.class);
+        list = viewModel.getMovies();
+        list.observe(getViewLifecycleOwner(), new Observer<List<ItemTopMovies>>() {
             @Override
             public void onChanged(List<ItemTopMovies> itemTopMovies) {
-                list = itemTopMovies;
-                recyclerView.setAdapter(new TopMovieAdapter (list, getActivity()));
-                Log.i("app_test", "onChanged: " + list);
+                recyclerView.setAdapter(new TopMovieAdapter(itemTopMovies, getActivity()));
             }
         });
+
         return view;
     }
 }

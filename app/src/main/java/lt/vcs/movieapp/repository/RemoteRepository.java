@@ -24,14 +24,7 @@ import retrofit2.Response;
 
 public class RemoteRepository {
 
-    private MutableLiveData<List<ItemTopMovies>> topMovies;
-
-    public LiveData<List<ItemTopMovies>> getMovies(){
-        if (topMovies == null){
-            topMovies = new MutableLiveData<List<ItemTopMovies>>();
-        }
-        return topMovies;
-    }
+    private MutableLiveData<List<ItemTopMovies>> topMovies = new MutableLiveData<>();
 
     public void getTitle() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
@@ -51,9 +44,11 @@ public class RemoteRepository {
             }
         };
         call.enqueue(callback);
+
+
     }
 
-    public void getTopMovies() {
+    public LiveData<List<ItemTopMovies>> getTopMovies() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
         Call<TopMoviesResponse> call = service.getTopMovies();
         Callback<TopMoviesResponse> callback = new Callback<TopMoviesResponse>() {
@@ -71,6 +66,7 @@ public class RemoteRepository {
         };
         call.enqueue(callback);
 
+        return topMovies;
     }
 
     public void getComingSoon() {
