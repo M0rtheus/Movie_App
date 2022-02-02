@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,9 @@ public class MovieFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_movie, container, false);
+        View view = inflater.inflate(R.layout.fragment_movie, container, false);
         viewModel = new ViewModelProvider(this).get(MovieFragmentViewModel.class);
+        viewModel.deleteAllItems();
         setView(view);
         setViewValues();
         setFloatingActionButton();
@@ -51,11 +53,11 @@ public class MovieFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (viewModel.getAllIMDBIds().contains(viewModel.getTitle().getImDBid())){
-                    Snackbar.make(view,"The title already exists in favorites",Snackbar.LENGTH_SHORT)
+                if (viewModel.getAllIMDBIds().contains(viewModel.getTitle().getImDBid())) {
+                    Snackbar.make(view, "The title already exists in favorites", Snackbar.LENGTH_SHORT)
                             .show();
-                } else if (!viewModel.getAllIMDBIds().contains(viewModel.getTitle().getImDBid())){
-                    Snackbar.make(view,"Title added to favorites",Snackbar.LENGTH_SHORT)
+                } else {
+                    Snackbar.make(view, "Title added to favorites", Snackbar.LENGTH_SHORT)
                             .show();
                     viewModel.insertItem();
                 }
