@@ -27,26 +27,27 @@ public class RemoteRepository {
 
     private MutableLiveData<List<ItemTopMovies>> topMovies = new MutableLiveData<>();
     private MutableLiveData<List<ItemMostPopular>> mostPopulars = new MutableLiveData<>();
+    private MutableLiveData<TitleResponse> title = new MutableLiveData<>();
 
-    public void getTitle() {
+
+    public LiveData<TitleResponse> getTitle(String id) {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
 
-        Call<TitleResponse> call = service.getTitle("tt0372784");
+        Call<TitleResponse> call = service.getTitle(id);
 
         Callback<TitleResponse> callback = new Callback<TitleResponse>() {
             @Override
             public void onResponse(@NonNull Call<TitleResponse> call, Response<TitleResponse> response) {
-                Log.i(LOG_TAG, "TitleResponse: " + response.body());
+                title.postValue(response.body());
             }
 
             @Override
             public void onFailure(@NonNull Call<TitleResponse> call, Throwable t) {
-                Log.i(LOG_TAG, "Failed to retrieve data" + t.getMessage());
                 call.cancel();
             }
         };
         call.enqueue(callback);
-
+        return title;
     }
 
     public LiveData<List<ItemTopMovies>> getTopMovies() {
@@ -113,7 +114,7 @@ public class RemoteRepository {
             @Override
             public void onResponse(@NonNull Call<MostPopularResponse> call, Response<MostPopularResponse> response) {
                 mostPopulars.postValue(response.body().getItems());
-                Log.i("app_test", "onResponse: "  + response.body());
+                Log.i("app_test", "onResponse: " + response.body());
             }
 
             @Override
