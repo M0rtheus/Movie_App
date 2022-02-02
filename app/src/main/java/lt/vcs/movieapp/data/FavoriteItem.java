@@ -16,8 +16,7 @@ public class FavoriteItem {
     private String image;
     private String imDbRating;
 
-    public FavoriteItem(int dbId, String id, String title, long year, String image, String imDbRating) {
-        this.dbId = dbId;
+    public FavoriteItem( String id, String title, long year, String image, String imDbRating) {
         this.id = id;
         this.title = title;
         this.year = year;

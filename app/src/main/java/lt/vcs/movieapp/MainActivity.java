@@ -12,6 +12,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import lt.vcs.movieapp.fragments.FavoritesFragment;
 import lt.vcs.movieapp.fragments.HomeFragment;
+import lt.vcs.movieapp.fragments.MovieFragment;
 import lt.vcs.movieapp.fragments.SearchFragment;
 import lt.vcs.movieapp.repository.LocalRepository;
 import lt.vcs.movieapp.repository.RemoteRepository;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private HomeFragment homeFragment = new HomeFragment();
     private SearchFragment searchFragment = new SearchFragment();
     private FavoritesFragment favoritesFragment = new FavoritesFragment();
+    private MovieFragment movieFragment = new MovieFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, new FavoritesFragment())
+                .replace(R.id.fragment_container,  new MovieFragment())
                 .commit();
     }
 

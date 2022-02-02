@@ -28,6 +28,9 @@ public interface FavoriteItemDAO {
     @Query("SELECT MAX(dbId) FROM " + DATABASE_TABLE_NAME)
     int getMaxId();
 
+    @Query("SELECT imDbRating FROM " + DATABASE_TABLE_NAME)
+    List<String> getAllIMDBIds();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertItem(FavoriteItem favoriteItem);
 

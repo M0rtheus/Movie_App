@@ -29,6 +29,10 @@ public class LocalRepository {
         return favoriteItemDAO.getItem(dbId);
     }
 
+    public List<String> getAllIMDBIds (){
+        return favoriteItemDAO.getAllIMDBIds();
+    }
+
     public void deleteItem(int dbId){
         favoriteItemDAO.deleteItem(dbId);
     }

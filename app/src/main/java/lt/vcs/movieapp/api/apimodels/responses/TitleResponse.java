@@ -42,6 +42,82 @@ public class TitleResponse {
     @SerializedName("metacriticRating")
     private String metacriticRating;
 
+    public int getDbId() {
+        return dbId;
+    }
+
+    public String getImDBid() {
+        return imDBid;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public long getYear() {
+        return year;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public long getRuntimeMins() {
+        return runtimeMins;
+    }
+
+    public String getRuntimeStr() {
+        return runtimeStr;
+    }
+
+    public String getPlot() {
+        return plot;
+    }
+
+    public String getAwards() {
+        return awards;
+    }
+
+    public String getDirectors() {
+        return directors;
+    }
+
+    public String getWriters() {
+        return writers;
+    }
+
+    public String getStars() {
+        return stars;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public String getCompanies() {
+        return companies;
+    }
+
+    public String getCountries() {
+        return countries;
+    }
+
+    public String getImDBRating() {
+        return imDBRating;
+    }
+
+    public String getImDBRatingVotes() {
+        return imDBRatingVotes;
+    }
+
+    public String getMetacriticRating() {
+        return metacriticRating;
+    }
+
     @Override
     public String toString() {
         return "Title{" +

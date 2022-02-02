@@ -24,9 +24,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Top Movies"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="30sp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/topMoviesRecyclerView"
@@ -41,9 +39,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Most Popular"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="30sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mostPopularRecyclerView"
@@ -58,9 +54,7 @@
                 android:layout_marginTop="16dp"
                 android:text="In Theaters"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="30sp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/inTheatersRecyclerView"
@@ -75,9 +69,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Coming Soon"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="30sp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/comingSoonRecyclerView"
