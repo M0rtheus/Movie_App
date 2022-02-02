@@ -2,6 +2,7 @@ package lt.vcs.movieapp.data;
 
 import static lt.vcs.movieapp.utilities.Constants.DATABASE_TABLE_NAME;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -13,7 +14,7 @@ import java.util.List;
 public interface FavoriteItemDAO {
 
     @Query("SELECT * FROM " + DATABASE_TABLE_NAME)
-    List<FavoriteItem> getAllItems();
+    LiveData<List<FavoriteItem>> getAllItems();
 
     @Query("SELECT * FROM " + DATABASE_TABLE_NAME + " WHERE dbId =:dbId")
     FavoriteItem getItem(int dbId);

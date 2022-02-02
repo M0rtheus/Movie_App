@@ -2,6 +2,8 @@ package lt.vcs.movieapp.repository;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import java.util.List;
 
 import lt.vcs.movieapp.data.AppDatabase;
@@ -11,21 +13,22 @@ import lt.vcs.movieapp.data.FavoriteItemDAO;
 public class LocalRepository {
 
     private FavoriteItemDAO favoriteItemDAO;
+    private LiveData<List<FavoriteItem>> allItems;
 
     public LocalRepository(Context context) {
         AppDatabase appDatabase = AppDatabase.getInstance(context);
         favoriteItemDAO = appDatabase.favoriteItemDAO();
     }
 
-    public List<FavoriteItem> getAllFavorites(){
+    public LiveData<List<FavoriteItem>> getAllItems(){
         return favoriteItemDAO.getAllItems();
     }
 
-    public FavoriteItem getFavoriteItem(int dbId){
+    public FavoriteItem getItem(int dbId){
         return favoriteItemDAO.getItem(dbId);
     }
 
-    public void deleteFavoriteItem(int dbId){
+    public void deleteItem(int dbId){
         favoriteItemDAO.deleteItem(dbId);
     }
 

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,11 +19,14 @@ import lt.vcs.movieapp.adapters.FavoritesAdapter;
 import lt.vcs.movieapp.adapters.TopMovieAdapter;
 import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.data.FavoriteItem;
+import lt.vcs.movieapp.viewmodels.FavoritesFragmentViewModel;
+import lt.vcs.movieapp.viewmodels.HomeFragmentViewModel;
 
 public class FavoritesFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private List<FavoriteItem> list;
+    private LiveData<List<FavoriteItem>> list;
+    private FavoritesFragmentViewModel viewModel;
 
     public FavoritesFragment() {
 
@@ -35,7 +40,15 @@ public class FavoritesFragment extends Fragment {
         recyclerView = view.findViewById(R.id.favoritesRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new FavoritesAdapter(list, getActivity()));
+
+        viewModel = new ViewModelProvider(this).get(FavoritesFragmentViewModel.class);
+        list = viewModel.getAllItems();
+        list.observe(getViewLifecycleOwner(), new Observer<List<FavoriteItem>>() {
+            @Override
+            public void onChanged(List<FavoriteItem> favoriteItems) {
+                recyclerView.setAdapter(new FavoritesAdapter(favoriteItems, getActivity()));
+            }
+        });
 
         return view;
     }
