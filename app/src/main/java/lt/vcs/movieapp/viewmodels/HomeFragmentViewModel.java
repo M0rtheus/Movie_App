@@ -16,7 +16,7 @@ public class HomeFragmentViewModel extends ViewModel {
         this.remoteRepository = new RemoteRepository();
     }
 
-    public LiveData<List<ItemTopMovies>> getMovies(){
+    public LiveData<List<ItemTopMovies>> getTopMovies(){
         if (topMovies == null){
             topMovies = remoteRepository.getTopMovies();
         }

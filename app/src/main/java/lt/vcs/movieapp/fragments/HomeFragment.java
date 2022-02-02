@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         viewModel = new ViewModelProvider(this).get(HomeFragmentViewModel.class);
-        list = viewModel.getMovies();
+        list = viewModel.getTopMovies();
         list.observe(getViewLifecycleOwner(), new Observer<List<ItemTopMovies>>() {
             @Override
             public void onChanged(List<ItemTopMovies> itemTopMovies) {
