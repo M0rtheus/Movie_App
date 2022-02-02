@@ -1,8 +1,8 @@
-package lt.vcs.movieapp.model.responses;
+package lt.vcs.movieapp.apimodels.responses;
 
 import java.util.List;
 
-import lt.vcs.movieapp.model.items.ItemTopMovies;
+import lt.vcs.movieapp.apimodels.items.ItemTopMovies;
 
 public class TopMoviesResponse {
     private List<ItemTopMovies> items;

@@ -1,15 +1,14 @@
-package lt.vcs.movieapp.model.items;
+package lt.vcs.movieapp.apimodels.items;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ItemMostPopular {
+
+public class ItemTopMovies {
 
     @SerializedName("id")
     private String id;
     @SerializedName("rank")
     private long rank;
-    @SerializedName("RankUpDown")
-    private long rankUpDown;
     @SerializedName("title")
     private String title;
     @SerializedName("year")
@@ -19,12 +18,35 @@ public class ItemMostPopular {
     @SerializedName("imDbRating")
     private String imDbRating;
 
+    public String getId() {
+        return id;
+    }
+
+    public long getRank() {
+        return rank;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public long getYear() {
+        return year;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getImDbRating() {
+        return imDbRating;
+    }
+
     @Override
     public String toString() {
-        return "ItemMostPopular{" +
+        return "Item{" +
                 "id='" + id + '\'' +
                 ", rank=" + rank +
-                ", rankUpDown=" + rankUpDown +
                 ", title='" + title + '\'' +
                 ", year=" + year +
                 ", image='" + image + '\'' +

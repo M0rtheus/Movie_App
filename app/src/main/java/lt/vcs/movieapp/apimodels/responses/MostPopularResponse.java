@@ -1,8 +1,8 @@
-package lt.vcs.movieapp.model.responses;
+package lt.vcs.movieapp.apimodels.responses;
 
 import java.util.List;
 
-import lt.vcs.movieapp.model.items.ItemMostPopular;
+import lt.vcs.movieapp.apimodels.items.ItemMostPopular;
 
 public class MostPopularResponse {
     private List<ItemMostPopular> items;

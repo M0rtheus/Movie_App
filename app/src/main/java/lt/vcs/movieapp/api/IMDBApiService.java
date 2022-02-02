@@ -2,11 +2,11 @@ package lt.vcs.movieapp.api;
 
 import static lt.vcs.movieapp.utilities.Constants.API_KEY;
 
-import lt.vcs.movieapp.model.responses.ComingSoonResponse;
-import lt.vcs.movieapp.model.responses.InTheatersResponse;
-import lt.vcs.movieapp.model.responses.MostPopularResponse;
-import lt.vcs.movieapp.model.responses.TitleResponse;
-import lt.vcs.movieapp.model.responses.TopMoviesResponse;
+import lt.vcs.movieapp.apimodels.responses.ComingSoonResponse;
+import lt.vcs.movieapp.apimodels.responses.InTheatersResponse;
+import lt.vcs.movieapp.apimodels.responses.MostPopularResponse;
+import lt.vcs.movieapp.apimodels.responses.TitleResponse;
+import lt.vcs.movieapp.apimodels.responses.TopMoviesResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

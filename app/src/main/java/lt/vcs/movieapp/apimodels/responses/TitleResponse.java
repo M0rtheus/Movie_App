@@ -1,4 +1,4 @@
-package lt.vcs.movieapp.model.responses;
+package lt.vcs.movieapp.apimodels.responses;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,8 +1,8 @@
-package lt.vcs.movieapp.model.items;
+package lt.vcs.movieapp.apimodels.items;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ItemComingSoon {
+public class ItemInTheaters {
 
     @SerializedName("id")
     private String id;
@@ -17,7 +17,7 @@ public class ItemComingSoon {
 
     @Override
     public String toString() {
-        return "ItemComingSoon{" +
+        return "ItemInTheaters{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", year='" + year + '\'' +

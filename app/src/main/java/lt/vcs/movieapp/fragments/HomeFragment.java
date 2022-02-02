@@ -1,7 +1,6 @@
 package lt.vcs.movieapp.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +12,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Collections;
 import java.util.List;
 
 import lt.vcs.movieapp.R;
 import lt.vcs.movieapp.adapters.TopMovieAdapter;
-import lt.vcs.movieapp.model.items.ItemTopMovies;
-import lt.vcs.movieapp.repository.RemoteRepository;
+import lt.vcs.movieapp.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.viewmodels.HomeFragmentViewModel;
 
 public class HomeFragment extends Fragment {

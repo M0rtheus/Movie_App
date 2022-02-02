@@ -1,8 +1,8 @@
-package lt.vcs.movieapp.model.responses;
+package lt.vcs.movieapp.apimodels.responses;
 
 import java.util.List;
 
-import lt.vcs.movieapp.model.items.ItemComingSoon;
+import lt.vcs.movieapp.apimodels.items.ItemComingSoon;
 
 public class ComingSoonResponse {
     private List<ItemComingSoon> items;
