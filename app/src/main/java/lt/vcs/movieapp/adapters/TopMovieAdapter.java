@@ -17,10 +17,10 @@ import java.util.List;
 import lt.vcs.movieapp.R;
 import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 
-public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.ViewHolder> {
+public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMoviesViewHolder> {
 
-    List<ItemTopMovies> list;
-    Context context;
+    private List<ItemTopMovies> list;
+    private Context context;
 
     public TopMovieAdapter(List<ItemTopMovies> list, Context context) {
         this.list = list;
@@ -29,13 +29,13 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.ViewHo
 
     @NonNull
     @Override
-    public TopMovieAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext())
+    public TopMoviesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new TopMoviesViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.top_movies_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TopMovieAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TopMoviesViewHolder holder, int position) {
         Picasso.with(context)
                 .load(list.get(position).getImage())
                 .into(holder.imageView);
@@ -55,14 +55,14 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.ViewHo
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class TopMoviesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView imageView;
-        TextView titleTextView;
-        TextView scoreTextView;
-        TextView rankTextView;
+        private ImageView imageView;
+        private TextView titleTextView;
+        private TextView scoreTextView;
+        private TextView rankTextView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public TopMoviesViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.topMovieImageView);
             rankTextView = itemView.findViewById(R.id.topMovieRankTextView);

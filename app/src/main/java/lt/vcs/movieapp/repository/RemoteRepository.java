@@ -45,27 +45,26 @@ public class RemoteRepository {
         };
         call.enqueue(callback);
 
-
     }
 
     public LiveData<List<ItemTopMovies>> getTopMovies() {
+
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
+
         Call<TopMoviesResponse> call = service.getTopMovies();
         Callback<TopMoviesResponse> callback = new Callback<TopMoviesResponse>() {
             @Override
             public void onResponse(@NonNull Call<TopMoviesResponse> call, Response<TopMoviesResponse> response) {
-                Log.i(LOG_TAG, "TopMoviesResponse: " + response.body());
                 topMovies.postValue(response.body().getItems());
             }
 
             @Override
             public void onFailure(@NonNull Call<TopMoviesResponse> call, Throwable t) {
-                Log.i(LOG_TAG, "Failed to retrieve data" + t.getMessage());
                 call.cancel();
             }
         };
-        call.enqueue(callback);
 
+        call.enqueue(callback);
         return topMovies;
     }
 
