@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import lt.vcs.movieapp.apimodels.items.ItemTopMovies;
+import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.repository.RemoteRepository;
 
 public class HomeFragmentViewModel extends ViewModel {

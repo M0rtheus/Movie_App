@@ -16,7 +16,7 @@ import java.util.List;
 
 import lt.vcs.movieapp.R;
 import lt.vcs.movieapp.adapters.TopMovieAdapter;
-import lt.vcs.movieapp.apimodels.items.ItemTopMovies;
+import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.viewmodels.HomeFragmentViewModel;
 
 public class HomeFragment extends Fragment {

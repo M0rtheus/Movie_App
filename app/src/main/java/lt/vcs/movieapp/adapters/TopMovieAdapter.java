@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import lt.vcs.movieapp.R;
-import lt.vcs.movieapp.apimodels.items.ItemTopMovies;
+import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 
 public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.ViewHolder> {
 

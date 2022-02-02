@@ -12,12 +12,12 @@ import java.util.List;
 
 import lt.vcs.movieapp.api.IMDBApi;
 import lt.vcs.movieapp.api.IMDBApiService;
-import lt.vcs.movieapp.apimodels.items.ItemTopMovies;
-import lt.vcs.movieapp.apimodels.responses.ComingSoonResponse;
-import lt.vcs.movieapp.apimodels.responses.InTheatersResponse;
-import lt.vcs.movieapp.apimodels.responses.MostPopularResponse;
-import lt.vcs.movieapp.apimodels.responses.TitleResponse;
-import lt.vcs.movieapp.apimodels.responses.TopMoviesResponse;
+import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
+import lt.vcs.movieapp.api.apimodels.responses.ComingSoonResponse;
+import lt.vcs.movieapp.api.apimodels.responses.InTheatersResponse;
+import lt.vcs.movieapp.api.apimodels.responses.MostPopularResponse;
+import lt.vcs.movieapp.api.apimodels.responses.TitleResponse;
+import lt.vcs.movieapp.api.apimodels.responses.TopMoviesResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
