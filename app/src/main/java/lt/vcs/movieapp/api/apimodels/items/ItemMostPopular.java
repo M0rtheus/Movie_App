@@ -8,8 +8,8 @@ public class ItemMostPopular {
     private String id;
     @SerializedName("rank")
     private long rank;
-    @SerializedName("RankUpDown")
-    private long rankUpDown;
+    @SerializedName("rankUpDown")
+    private String rankUpDown;
     @SerializedName("title")
     private String title;
     @SerializedName("year")
@@ -18,6 +18,34 @@ public class ItemMostPopular {
     private String image;
     @SerializedName("imDbRating")
     private String imDbRating;
+
+    public String getId() {
+        return id;
+    }
+
+    public long getRank() {
+        return rank;
+    }
+
+    public String getRankUpDown() {
+        return rankUpDown;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public long getYear() {
+        return year;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getImDbRating() {
+        return imDbRating;
+    }
 
     @Override
     public String toString() {

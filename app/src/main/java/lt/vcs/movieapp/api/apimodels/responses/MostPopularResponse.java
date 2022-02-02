@@ -7,6 +7,10 @@ import lt.vcs.movieapp.api.apimodels.items.ItemMostPopular;
 public class MostPopularResponse {
     private List<ItemMostPopular> items;
 
+    public List<ItemMostPopular> getItems() {
+        return items;
+    }
+
     @Override
     public String toString() {
         return "MostPopularResponse{" +

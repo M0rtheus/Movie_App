@@ -1,5 +1,6 @@
 package lt.vcs.movieapp.repository;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
@@ -15,8 +16,8 @@ public class LocalRepository {
     private FavoriteItemDAO favoriteItemDAO;
     private LiveData<List<FavoriteItem>> allItems;
 
-    public LocalRepository(Context context) {
-        AppDatabase appDatabase = AppDatabase.getInstance(context);
+    public LocalRepository(Application application) {
+        AppDatabase appDatabase = AppDatabase.getInstance(application);
         favoriteItemDAO = appDatabase.favoriteItemDAO();
     }
 

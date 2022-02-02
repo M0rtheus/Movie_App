@@ -19,7 +19,6 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract FavoriteItemDAO favoriteItemDAO();
 
-
     private static AppDatabase instance;
 
     public static AppDatabase getInstance(Context context) {

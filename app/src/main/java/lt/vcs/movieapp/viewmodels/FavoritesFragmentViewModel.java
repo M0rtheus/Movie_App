@@ -1,7 +1,9 @@
 package lt.vcs.movieapp.viewmodels;
 
+import android.app.Application;
 import android.content.Context;
 
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -10,12 +12,14 @@ import java.util.List;
 import lt.vcs.movieapp.data.FavoriteItem;
 import lt.vcs.movieapp.repository.LocalRepository;
 
-public class FavoritesFragmentViewModel extends ViewModel {
+public class FavoritesFragmentViewModel extends AndroidViewModel {
+
     private LocalRepository localRepository;
     private LiveData<List<FavoriteItem>> allItems;
 
-    public FavoritesFragmentViewModel(Context context) {
-        this.localRepository = new LocalRepository(context);
+    public FavoritesFragmentViewModel(Application application) {
+        super(application);
+        this.localRepository = new LocalRepository(application);
         this.allItems = localRepository.getAllItems();
     }
 

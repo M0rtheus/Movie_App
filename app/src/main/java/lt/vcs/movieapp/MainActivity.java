@@ -28,16 +28,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        LocalRepository localRepository = new LocalRepository(getApplicationContext());
-//        localRepository.insertItem(new FavoriteItem(1,"tt11466222", "Jackass Forever", 2022, "https://m.media-amazon.", "10"));
-//        localRepository.deleteAllItems();
-
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(navListener);
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, new HomeFragment())
+                .replace(R.id.fragment_container, new FavoritesFragment())
                 .commit();
     }
 

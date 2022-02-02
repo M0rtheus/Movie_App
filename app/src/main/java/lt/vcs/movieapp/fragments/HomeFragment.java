@@ -15,16 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import lt.vcs.movieapp.R;
+import lt.vcs.movieapp.adapters.MostPopularAdapter;
 import lt.vcs.movieapp.adapters.TopMovieAdapter;
+import lt.vcs.movieapp.api.apimodels.items.ItemMostPopular;
 import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.viewmodels.HomeFragmentViewModel;
 
 public class HomeFragment extends Fragment {
 
-    private RecyclerView recyclerView;
+    private RecyclerView topMoviesRecyclerView;
+    private RecyclerView mostPopularRecyclerView;
     private HomeFragmentViewModel viewModel;
-    private LiveData<List<ItemTopMovies>> list;
-
+    private LiveData<List<ItemTopMovies>> topMoviesList;
+    private LiveData<List<ItemMostPopular>> mostPopularList;
     public HomeFragment() {
 
     }
@@ -33,20 +36,35 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        recyclerView = view.findViewById(R.id.topMoviesRecyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
         viewModel = new ViewModelProvider(this).get(HomeFragmentViewModel.class);
-        list = viewModel.getTopMovies();
-        list.observe(getViewLifecycleOwner(), new Observer<List<ItemTopMovies>>() {
+//        setTopMoviesRecyclerView(view);
+        setMostPopularRecyclerView(view);
+        return view;
+    }
+
+    private void setTopMoviesRecyclerView(View view) {
+        topMoviesRecyclerView = view.findViewById(R.id.topMoviesRecyclerView);
+        topMoviesRecyclerView.setHasFixedSize(true);
+        topMoviesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        topMoviesList = viewModel.getTopMovies();
+        topMoviesList.observe(getViewLifecycleOwner(), new Observer<List<ItemTopMovies>>() {
             @Override
             public void onChanged(List<ItemTopMovies> itemTopMovies) {
-                recyclerView.setAdapter(new TopMovieAdapter(itemTopMovies, getActivity()));
+                topMoviesRecyclerView.setAdapter(new TopMovieAdapter(itemTopMovies, getActivity()));
             }
         });
+    }
 
-        return view;
+    private void setMostPopularRecyclerView(View view) {
+        mostPopularRecyclerView = view.findViewById(R.id.mostPopularRecyclerView);
+        mostPopularRecyclerView.setHasFixedSize(true);
+        mostPopularRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        mostPopularList = viewModel.getMostPopulars();
+        mostPopularList.observe(getViewLifecycleOwner(), new Observer<List<ItemMostPopular>>() {
+            @Override
+            public void onChanged(List<ItemMostPopular> itemMostPopulars) {
+                mostPopularRecyclerView.setAdapter(new MostPopularAdapter(itemMostPopulars, getActivity()));
+            }
+    });
     }
 }

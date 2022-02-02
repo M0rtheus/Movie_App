@@ -12,6 +12,7 @@ import java.util.List;
 
 import lt.vcs.movieapp.api.IMDBApi;
 import lt.vcs.movieapp.api.IMDBApiService;
+import lt.vcs.movieapp.api.apimodels.items.ItemMostPopular;
 import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.api.apimodels.responses.ComingSoonResponse;
 import lt.vcs.movieapp.api.apimodels.responses.InTheatersResponse;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 public class RemoteRepository {
 
     private MutableLiveData<List<ItemTopMovies>> topMovies = new MutableLiveData<>();
+    private MutableLiveData<List<ItemMostPopular>> mostPopulars = new MutableLiveData<>();
 
     public void getTitle() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
@@ -104,22 +106,24 @@ public class RemoteRepository {
         call.enqueue(callback);
     }
 
-    public void getMostPopular() {
+    public LiveData<List<ItemMostPopular>> getMostPopulars() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
         Call<MostPopularResponse> call = service.getMostPopular();
         Callback<MostPopularResponse> callback = new Callback<MostPopularResponse>() {
             @Override
             public void onResponse(@NonNull Call<MostPopularResponse> call, Response<MostPopularResponse> response) {
-                Log.i(LOG_TAG, "MostPopularResponse: " + response.body());
+                mostPopulars.postValue(response.body().getItems());
+                Log.i("app_test", "onResponse: "  + response.body());
             }
 
             @Override
             public void onFailure(@NonNull Call<MostPopularResponse> call, Throwable t) {
-                Log.i(LOG_TAG, "Failed to retrieve data" + t.getMessage());
                 call.cancel();
             }
         };
         call.enqueue(callback);
+
+        return mostPopulars;
     }
 
 }

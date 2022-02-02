@@ -19,7 +19,6 @@ public interface IMDBApiService {
     @GET("MostPopularMovies/" + API_KEY)
     Call<MostPopularResponse> getMostPopular();
 
-
     @GET("Top250Movies/" + API_KEY)
     Call<TopMoviesResponse> getTopMovies();
 
