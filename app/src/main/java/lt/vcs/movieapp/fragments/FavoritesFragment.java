@@ -1,6 +1,7 @@
 package lt.vcs.movieapp.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import lt.vcs.movieapp.R;
 import lt.vcs.movieapp.adapters.ClickListener;
+import lt.vcs.movieapp.adapters.DeleteClickListener;
 import lt.vcs.movieapp.adapters.FavoritesAdapter;
 import lt.vcs.movieapp.data.FavoriteItem;
 import lt.vcs.movieapp.viewmodels.FavoritesFragmentViewModel;
@@ -47,6 +49,7 @@ public class FavoritesFragment extends Fragment {
         favoritesAdapter = new FavoritesAdapter(favoriteItemsList, getActivity());
         recyclerView.setAdapter(favoritesAdapter);
         onItemFavoriteClick();
+        onDeleteClick();
         favoriteItemsLiveList.observe(getViewLifecycleOwner(), new Observer<List<FavoriteItem>>() {
             @Override
             public void onChanged(List<FavoriteItem> favoriteItems) {
@@ -55,6 +58,16 @@ public class FavoritesFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void onDeleteClick(){
+        favoritesAdapter.setOnDeleteClickListener(new DeleteClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                viewModel.deleteItem(favoriteItemsList.get(position).getDbId());
+                Log.i("app_test", "onItemClick: " + position);
+            }
+        });
     }
 
     private void onItemFavoriteClick() {

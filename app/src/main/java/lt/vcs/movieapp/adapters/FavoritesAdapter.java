@@ -1,6 +1,7 @@
 package lt.vcs.movieapp.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,6 +23,7 @@ import lt.vcs.movieapp.data.FavoriteItem;
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder> {
 
     private static ClickListener clickListener;
+    private static  DeleteClickListener deleteClickListener;
     private List<FavoriteItem> list;
     private Context context;
 
@@ -37,7 +41,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
     @Override
     public FavoritesAdapter.FavoritesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new FavoritesAdapter.FavoritesViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.favorites_item, parent, false));
+                .inflate(R.layout.item_favorites, parent, false));
     }
 
     @Override
@@ -66,22 +70,38 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
         private ImageView imageView;
         private TextView titleTextView;
         private TextView scoreTextView;
+        private FloatingActionButton floatingActionButton;
 
         public FavoritesViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.favoritesImageView);
             titleTextView = itemView.findViewById(R.id.favoritesTitleTextView);
             scoreTextView = itemView.findViewById(R.id.favoritesIMDBScoreTextView);
+            floatingActionButton = itemView.findViewById(R.id.deleteButton);
             itemView.setOnClickListener(this);
+            floatingActionButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            FavoritesAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
+            if (view == itemView){
+                FavoritesAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
+            } else if (view == floatingActionButton){
+                FavoritesAdapter.deleteClickListener.onItemClick(getAbsoluteAdapterPosition(), view);
+            }
+
         }
     }
 
     public void setOnItemClickListener(ClickListener clickListener) {
         FavoritesAdapter.clickListener = clickListener;
+        Log.i("app_test", "setOnItemClickListener: ");
     }
+
+    public void setOnDeleteClickListener(DeleteClickListener clickListener) {
+        FavoritesAdapter.deleteClickListener = clickListener;
+        Log.i("app_test", "setOnDeleteClickListener: ");
+    }
+
+
 }
