@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import lt.vcs.movieapp.R;
 import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
+import lt.vcs.movieapp.fragments.MovieFragment;
 
 public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMoviesViewHolder> {
 
@@ -31,7 +33,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
     @Override
     public TopMoviesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new TopMoviesViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.top_movies_item, parent, false));
+                .inflate(R.layout.item_top_movies, parent, false));
     }
 
     @Override
@@ -55,7 +57,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
         return list.size();
     }
 
-    public class TopMoviesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    protected class TopMoviesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView imageView;
         private TextView titleTextView;
@@ -72,6 +74,9 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
 
         @Override
         public void onClick(View view) {
+            AppCompatActivity activity = (AppCompatActivity) view.getContext();
+            MovieFragment movieFragment = new MovieFragment();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, movieFragment).addToBackStack(null).commit();
 
         }
     }

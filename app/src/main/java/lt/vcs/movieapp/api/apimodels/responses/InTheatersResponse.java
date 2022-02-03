@@ -7,6 +7,10 @@ import lt.vcs.movieapp.api.apimodels.items.ItemInTheaters;
 public class InTheatersResponse {
     private List<ItemInTheaters> items;
 
+    public List<ItemInTheaters> getItems() {
+        return items;
+    }
+
     @Override
     public String toString() {
         return "InTheatersResponse{" +

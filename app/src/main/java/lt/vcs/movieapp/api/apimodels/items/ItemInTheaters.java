@@ -15,6 +15,26 @@ public class ItemInTheaters {
     @SerializedName("image")
     private String image;
 
+    public String getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String getReleaseState() {
+        return releaseState;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
     @Override
     public String toString() {
         return "ItemInTheaters{" +

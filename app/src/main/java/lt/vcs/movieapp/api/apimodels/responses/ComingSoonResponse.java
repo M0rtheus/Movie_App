@@ -7,6 +7,10 @@ import lt.vcs.movieapp.api.apimodels.items.ItemComingSoon;
 public class ComingSoonResponse {
     private List<ItemComingSoon> items;
 
+    public List<ItemComingSoon> getItems() {
+        return items;
+    }
+
     @Override
     public String toString() {
         return "ComingSoonResponse{" +

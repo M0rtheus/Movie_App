@@ -23,9 +23,20 @@
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/comingSoonDateTextView"
+            app:layout_constraintBottom_toTopOf="@+id/comingSoonYearTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/comingSoonYearTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="2022"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/comingSoonDateTextView"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/comingSoonDateTextView"
@@ -33,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
-            android:text="IMDB: 10"
+            android:text="February 03"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/comingSoonTitleTextView"
             app:layout_constraintStart_toStartOf="parent" />

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container,  new MovieFragment())
+                .replace(R.id.fragment_container,  new HomeFragment())
                 .commit();
     }
 

@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -32,7 +31,7 @@ public class MostPopularAdapter extends RecyclerView.Adapter<MostPopularAdapter.
     @Override
     public MostPopularViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MostPopularAdapter.MostPopularViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.most_popular_item, parent, false));
+                .inflate(R.layout.item_most_popular, parent, false));
     }
 
     @Override

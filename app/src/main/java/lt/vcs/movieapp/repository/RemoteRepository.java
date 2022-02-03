@@ -12,6 +12,8 @@ import java.util.List;
 
 import lt.vcs.movieapp.api.IMDBApi;
 import lt.vcs.movieapp.api.IMDBApiService;
+import lt.vcs.movieapp.api.apimodels.items.ItemComingSoon;
+import lt.vcs.movieapp.api.apimodels.items.ItemInTheaters;
 import lt.vcs.movieapp.api.apimodels.items.ItemMostPopular;
 import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.api.apimodels.responses.ComingSoonResponse;
@@ -25,9 +27,11 @@ import retrofit2.Response;
 
 public class RemoteRepository {
 
-    private MutableLiveData<List<ItemTopMovies>> topMovies = new MutableLiveData<>();
-    private MutableLiveData<List<ItemMostPopular>> mostPopulars = new MutableLiveData<>();
     private MutableLiveData<TitleResponse> title = new MutableLiveData<>();
+    private MutableLiveData<List<ItemTopMovies>> topMoviesList = new MutableLiveData<>();
+    private MutableLiveData<List<ItemMostPopular>> mostPopularsList = new MutableLiveData<>();
+    private MutableLiveData<List<ItemComingSoon>> comingSoonList = new MutableLiveData<>();
+    private MutableLiveData<List<ItemInTheaters>> inTheatersList = new MutableLiveData<>();
 
 
     public LiveData<TitleResponse> getTitle(String id) {
@@ -50,7 +54,7 @@ public class RemoteRepository {
         return title;
     }
 
-    public LiveData<List<ItemTopMovies>> getTopMovies() {
+    public LiveData<List<ItemTopMovies>> getTopMoviesList() {
 
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
 
@@ -58,7 +62,7 @@ public class RemoteRepository {
         Callback<TopMoviesResponse> callback = new Callback<TopMoviesResponse>() {
             @Override
             public void onResponse(@NonNull Call<TopMoviesResponse> call, Response<TopMoviesResponse> response) {
-                topMovies.postValue(response.body().getItems());
+                topMoviesList.postValue(response.body().getItems());
             }
 
             @Override
@@ -68,52 +72,53 @@ public class RemoteRepository {
         };
 
         call.enqueue(callback);
-        return topMovies;
+        return topMoviesList;
     }
 
-    public void getComingSoon() {
+    public LiveData<List<ItemComingSoon>> getComingSoon() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
         Call<ComingSoonResponse> call = service.getComingSoon();
         Callback<ComingSoonResponse> callback = new Callback<ComingSoonResponse>() {
             @Override
             public void onResponse(@NonNull Call<ComingSoonResponse> call, Response<ComingSoonResponse> response) {
-                Log.i(LOG_TAG, "ComingSoonResponse: " + response.body());
+                comingSoonList.postValue(response.body().getItems());
             }
 
             @Override
             public void onFailure(@NonNull Call<ComingSoonResponse> call, Throwable t) {
-                Log.i(LOG_TAG, "Failed to retrieve data" + t.getMessage());
                 call.cancel();
             }
         };
         call.enqueue(callback);
+        return comingSoonList;
     }
 
-    public void getInTheaters() {
+    public LiveData<List<ItemInTheaters>> getInTheaters() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
         Call<InTheatersResponse> call = service.getInTheaters();
         Callback<InTheatersResponse> callback = new Callback<InTheatersResponse>() {
             @Override
             public void onResponse(@NonNull Call<InTheatersResponse> call, Response<InTheatersResponse> response) {
-                Log.i(LOG_TAG, "InTheatersResponse: " + response.body());
+                inTheatersList.postValue(response.body().getItems());
             }
 
             @Override
             public void onFailure(@NonNull Call<InTheatersResponse> call, Throwable t) {
-                Log.i(LOG_TAG, "Failed to retrieve data" + t.getMessage());
+
                 call.cancel();
             }
         };
         call.enqueue(callback);
+        return inTheatersList;
     }
 
-    public LiveData<List<ItemMostPopular>> getMostPopulars() {
+    public LiveData<List<ItemMostPopular>> getMostPopularsList() {
         IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
         Call<MostPopularResponse> call = service.getMostPopular();
         Callback<MostPopularResponse> callback = new Callback<MostPopularResponse>() {
             @Override
             public void onResponse(@NonNull Call<MostPopularResponse> call, Response<MostPopularResponse> response) {
-                mostPopulars.postValue(response.body().getItems());
+                mostPopularsList.postValue(response.body().getItems());
                 Log.i("app_test", "onResponse: " + response.body());
             }
 
@@ -124,7 +129,7 @@ public class RemoteRepository {
         };
         call.enqueue(callback);
 
-        return mostPopulars;
+        return mostPopularsList;
     }
 
 }
