@@ -12,22 +12,23 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
-import lt.vcs.movieapp.MainActivity;
 import lt.vcs.movieapp.R;
+import lt.vcs.movieapp.adapters.ClickListener;
 import lt.vcs.movieapp.adapters.FavoritesAdapter;
-import lt.vcs.movieapp.adapters.TopMovieAdapter;
-import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.data.FavoriteItem;
 import lt.vcs.movieapp.viewmodels.FavoritesFragmentViewModel;
-import lt.vcs.movieapp.viewmodels.HomeFragmentViewModel;
 
 public class FavoritesFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private LiveData<List<FavoriteItem>> list;
+    private LiveData<List<FavoriteItem>> favoriteItemsLiveList;
+    private List<FavoriteItem> favoriteItemsList = Collections.emptyList();
     private FavoritesFragmentViewModel viewModel;
+    private FavoritesAdapter favoritesAdapter;
+    private MovieFragment movieFragment;
 
     public FavoritesFragment() {
 
@@ -41,22 +42,31 @@ public class FavoritesFragment extends Fragment {
         recyclerView = view.findViewById(R.id.favoritesRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
         viewModel = new ViewModelProvider(getActivity()).get(FavoritesFragmentViewModel.class);
-
-//        viewModel.insertItem(new FavoriteItem(1,"tt11466222", "Title 1", 2022, "https://imdb-api.com/images/original/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6762_AL_.jpg", "10"));
-//        viewModel.insertItem(new FavoriteItem(2,"tt11466222", "Title 2", 2022, "https://imdb-api.com/images/original/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6762_AL_.jpg", "10"));
-//        viewModel.insertItem(new FavoriteItem(3,"tt11466222", "Title 3", 2022, "https://imdb-api.com/images/original/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6762_AL_.jpg", "10"));
-
-        list = viewModel.getAllItems();
-        list.observe(getViewLifecycleOwner(), new Observer<List<FavoriteItem>>() {
+        favoriteItemsLiveList = viewModel.getAllItems();
+        favoritesAdapter = new FavoritesAdapter(favoriteItemsList, getActivity());
+        recyclerView.setAdapter(favoritesAdapter);
+        onItemFavoriteClick();
+        favoriteItemsLiveList.observe(getViewLifecycleOwner(), new Observer<List<FavoriteItem>>() {
             @Override
             public void onChanged(List<FavoriteItem> favoriteItems) {
-                recyclerView.setAdapter(new FavoritesAdapter(favoriteItems, getActivity()));
+                favoriteItemsList = favoriteItems;
+                favoritesAdapter.setList(favoriteItemsList);
             }
         });
-
         return view;
+    }
+
+    private void onItemFavoriteClick() {
+        favoritesAdapter.setOnItemClickListener(new ClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                movieFragment = new MovieFragment(favoriteItemsList.get(position).getId());
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, movieFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 }

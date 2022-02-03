@@ -29,10 +29,11 @@ public class MovieFragment extends Fragment {
     private ImageView imageView;
     private MovieFragmentViewModel viewModel;
     private FloatingActionButton fab;
+    private String titleId;
 
 
-    public MovieFragment() {
-
+    public MovieFragment(String titleId) {
+        this.titleId = titleId;
     }
 
     @Override
@@ -40,7 +41,6 @@ public class MovieFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
         viewModel = new ViewModelProvider(this).get(MovieFragmentViewModel.class);
-        viewModel.deleteAllItems();
         setView(view);
         setViewValues();
         setFloatingActionButton();
@@ -64,7 +64,7 @@ public class MovieFragment extends Fragment {
     }
 
     private void setViewValues() {
-        viewModel.getTitle("tt0372784").observe(getViewLifecycleOwner(), new Observer<TitleResponse>() {
+        viewModel.getTitle(titleId).observe(getViewLifecycleOwner(), new Observer<TitleResponse>() {
             @Override
             public void onChanged(TitleResponse titleResponse) {
                 movieTitleTextView.setText(titleResponse.getTitle());

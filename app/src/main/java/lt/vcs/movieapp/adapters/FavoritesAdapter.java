@@ -19,12 +19,18 @@ import lt.vcs.movieapp.data.FavoriteItem;
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder> {
 
+    private static ClickListener clickListener;
     private List<FavoriteItem> list;
     private Context context;
 
     public FavoritesAdapter(List<FavoriteItem> list, Context context) {
         this.list = list;
         this.context = context;
+    }
+
+    public void setList(List<FavoriteItem> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -66,12 +72,16 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
             imageView = itemView.findViewById(R.id.favoritesImageView);
             titleTextView = itemView.findViewById(R.id.favoritesTitleTextView);
             scoreTextView = itemView.findViewById(R.id.favoritesIMDBScoreTextView);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-
+            FavoritesAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
         }
     }
 
+    public void setOnItemClickListener(ClickListener clickListener) {
+        FavoritesAdapter.clickListener = clickListener;
+    }
 }

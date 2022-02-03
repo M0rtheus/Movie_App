@@ -20,12 +20,18 @@ import lt.vcs.movieapp.api.apimodels.items.ItemInTheaters;
 
 public class InTheatersAdapter extends RecyclerView.Adapter<InTheatersAdapter.InTheatersViewHolder> {
 
+    private static ClickListener clickListener;
     private List<ItemInTheaters> list;
     private Context context;
 
     public InTheatersAdapter(List<ItemInTheaters> list, Context context) {
         this.list = list;
         this.context = context;
+    }
+
+    public void setList(List<ItemInTheaters> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -68,12 +74,16 @@ public class InTheatersAdapter extends RecyclerView.Adapter<InTheatersAdapter.In
             titleTextView = itemView.findViewById(R.id.inTheatersTitleTextView);
             yearTextView = itemView.findViewById(R.id.inTheatersYearTextView);
             dateTextView = itemView.findViewById(R.id.inTheatersDateTextView);
-
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-
+            InTheatersAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
         }
+    }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        InTheatersAdapter.clickListener = clickListener;
     }
 }

@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private HomeFragment homeFragment = new HomeFragment();
     private SearchFragment searchFragment = new SearchFragment();
     private FavoritesFragment favoritesFragment = new FavoritesFragment();
-    private MovieFragment movieFragment = new MovieFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

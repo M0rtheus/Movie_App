@@ -19,12 +19,18 @@ import lt.vcs.movieapp.api.apimodels.items.ItemMostPopular;
 
 public class MostPopularAdapter extends RecyclerView.Adapter<MostPopularAdapter.MostPopularViewHolder> {
 
+    private static ClickListener clickListener;
     private List<ItemMostPopular> list;
     private Context context;
 
     public MostPopularAdapter(List<ItemMostPopular> list, Context context) {
         this.list = list;
         this.context = context;
+    }
+
+    public void setList(List<ItemMostPopular> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -73,11 +79,17 @@ public class MostPopularAdapter extends RecyclerView.Adapter<MostPopularAdapter.
             scoreTextView = itemView.findViewById(R.id.mostPopularIMDBScoreTextView);
             titleTextView = itemView.findViewById(R.id.mostPopularTitleTextView);
             rankUpDownTextView = itemView.findViewById(R.id.mostPopularRankUpDownTextView);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-
+            MostPopularAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
         }
     }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        MostPopularAdapter.clickListener = clickListener;
+    }
+
 }

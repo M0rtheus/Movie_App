@@ -19,12 +19,18 @@ import lt.vcs.movieapp.api.apimodels.items.ItemComingSoon;
 
 public class ComingSoonAdapter extends RecyclerView.Adapter<ComingSoonAdapter.ComingSoonViewHolder> {
 
+    private static ClickListener clickListener;
     private List<ItemComingSoon> list;
     private Context context;
 
     public ComingSoonAdapter(List<ItemComingSoon> list, Context context) {
         this.list = list;
         this.context = context;
+    }
+
+    public void setList(List<ItemComingSoon> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -68,11 +74,17 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<ComingSoonAdapter.Co
             titleTextView = itemView.findViewById(R.id.comingSoonTitleTextView);
             yearTextView = itemView.findViewById(R.id.comingSoonYearTextView);
             dateTextView = itemView.findViewById(R.id.comingSoonDateTextView);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-
+            ComingSoonAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
         }
     }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        ComingSoonAdapter.clickListener = clickListener;
+    }
 }
+

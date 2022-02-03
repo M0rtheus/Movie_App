@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -21,12 +22,18 @@ import lt.vcs.movieapp.fragments.MovieFragment;
 
 public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMoviesViewHolder> {
 
+    private static ClickListener clickListener;
     private List<ItemTopMovies> list;
     private Context context;
 
     public TopMovieAdapter(List<ItemTopMovies> list, Context context) {
         this.list = list;
         this.context = context;
+    }
+
+    public void setList(List<ItemTopMovies> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -45,10 +52,10 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
         holder.rankTextView.setText("Rank: " + list.get(position).getRank());
         holder.scoreTextView.setText("IMDB Score: " + list.get(position).getImDbRating());
 
-        if (list.get(position).getTitle().length() < 25){
+        if (list.get(position).getTitle().length() < 25) {
             holder.titleTextView.setText(list.get(position).getTitle());
         } else {
-            holder.titleTextView.setText(list.get(position).getTitle().substring(0,25) + "...");
+            holder.titleTextView.setText(list.get(position).getTitle().substring(0, 25) + "...");
         }
     }
 
@@ -64,20 +71,23 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
         private TextView scoreTextView;
         private TextView rankTextView;
 
+
         public TopMoviesViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.topMovieImageView);
             rankTextView = itemView.findViewById(R.id.topMovieRankTextView);
             scoreTextView = itemView.findViewById(R.id.topMovieIMDBScoreTextView);
             titleTextView = itemView.findViewById(R.id.topMovieTitleTextView);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            AppCompatActivity activity = (AppCompatActivity) view.getContext();
-            MovieFragment movieFragment = new MovieFragment();
-            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, movieFragment).addToBackStack(null).commit();
-
+            TopMovieAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
         }
+    }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        TopMovieAdapter.clickListener = clickListener;
     }
 }
