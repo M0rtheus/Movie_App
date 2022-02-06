@@ -1,6 +1,7 @@
 package lt.vcs.movieapp.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     public void setList(List<ItemSearch> list) {
         this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull

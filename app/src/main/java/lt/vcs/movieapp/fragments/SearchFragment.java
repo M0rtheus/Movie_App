@@ -1,6 +1,7 @@
 package lt.vcs.movieapp.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,30 +38,19 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_search, container, false);
-        searchRecyclerView = view.findViewById(R.id.searchRecyclerView);
-        searchRecyclerView.setHasFixedSize(true);
-        searchRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        searchLiveList = viewModel.getSearchList();
-        searchAdapter = new SearchAdapter(searchList, getActivity());
-        searchRecyclerView.setAdapter(searchAdapter);
-        searchLiveList.observe(getViewLifecycleOwner(), new Observer<List<ItemSearch>>() {
-            @Override
-            public void onChanged(List<ItemSearch> itemSearches) {
-                searchList = itemSearches;
-                searchAdapter.setList(searchList);
-            }
-        });
-
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        viewModel = new ViewModelProvider(this).get(SearchFragmentViewModel.class);
+        setUpSearchView(view);
         return view;
     }
 
-    private void setSearchView(View view){
+    private void setUpSearchView(View view) {
         searchView = view.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                searchLiveList = viewModel.getSearchList(query);
+                setUpSearchRecyclerView(view);
                 return false;
             }
 
@@ -69,4 +60,20 @@ public class SearchFragment extends Fragment {
             }
         });
     }
+
+    private void setUpSearchRecyclerView(View view) {
+        searchRecyclerView = view.findViewById(R.id.searchRecyclerView);
+        searchRecyclerView.setHasFixedSize(true);
+        searchRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        searchAdapter = new SearchAdapter(searchList, getActivity());
+        searchRecyclerView.setAdapter(searchAdapter);
+        searchLiveList.observe(getViewLifecycleOwner(), new Observer<List<ItemSearch>>() {
+            @Override
+            public void onChanged(List<ItemSearch> itemSearches) {
+                searchList = itemSearches;
+                searchAdapter.setList(searchList);
+            }
+        });
+    }
+
 }

@@ -1,13 +1,14 @@
 package lt.vcs.movieapp.viewmodels;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
 import lt.vcs.movieapp.api.apimodels.items.ItemSearch;
 import lt.vcs.movieapp.repository.RemoteRepository;
 
-public class SearchFragmentViewModel {
+public class SearchFragmentViewModel extends ViewModel {
 
     private LiveData<List<ItemSearch>> searchList;
     private RemoteRepository remoteRepository;
@@ -17,9 +18,6 @@ public class SearchFragmentViewModel {
     }
 
     public LiveData<List<ItemSearch>> getSearchList(String expresion) {
-        if (searchList == null){
-            searchList = remoteRepository.getSearchList(expresion);
-        }
-        return searchList;
+        return remoteRepository.getSearchList(expresion);
     }
 }

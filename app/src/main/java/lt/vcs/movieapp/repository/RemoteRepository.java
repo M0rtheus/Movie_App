@@ -142,7 +142,6 @@ public class RemoteRepository {
             @Override
             public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
                 searchList.postValue(response.body().getResults());
-                Log.i("app_test", "onResponse: " + response.body());
             }
 
             @Override
