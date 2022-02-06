@@ -1,7 +1,6 @@
 package lt.vcs.movieapp.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,12 +73,17 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             imageView = itemView.findViewById(R.id.searchImageView);
             titleTextView = itemView.findViewById(R.id.searchTitleTextView);
             descriptionTextView = itemView.findViewById(R.id.searchDescriptionTextView);
-
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-
+            SearchAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
         }
     }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        SearchAdapter.clickListener = clickListener;
+    }
+
 }

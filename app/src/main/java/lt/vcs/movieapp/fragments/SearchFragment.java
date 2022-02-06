@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 import lt.vcs.movieapp.R;
+import lt.vcs.movieapp.adapters.ClickListener;
 import lt.vcs.movieapp.adapters.SearchAdapter;
 import lt.vcs.movieapp.api.apimodels.items.ItemSearch;
 import lt.vcs.movieapp.viewmodels.SearchFragmentViewModel;
@@ -30,6 +31,7 @@ public class SearchFragment extends Fragment {
     private LiveData<List<ItemSearch>> searchLiveList;
     private List<ItemSearch> searchList = Collections.emptyList();
     private SearchView searchView;
+    private MovieFragment movieFragment;
 
     public SearchFragment() {
 
@@ -67,11 +69,25 @@ public class SearchFragment extends Fragment {
         searchRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         searchAdapter = new SearchAdapter(searchList, getActivity());
         searchRecyclerView.setAdapter(searchAdapter);
+        onItemSearchClick();
         searchLiveList.observe(getViewLifecycleOwner(), new Observer<List<ItemSearch>>() {
             @Override
             public void onChanged(List<ItemSearch> itemSearches) {
                 searchList = itemSearches;
                 searchAdapter.setList(searchList);
+            }
+        });
+    }
+
+    private void onItemSearchClick() {
+        searchAdapter.setOnItemClickListener(new ClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                movieFragment = new MovieFragment(searchList.get(position).getId());
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, movieFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }
