@@ -24,8 +24,14 @@ public class MovieFragment extends Fragment {
     private TextView movieTitleTextView;
     private TextView movieYearTextView;
     private TextView movieRuntimeTextView;
+    private TextView movieGenresTextView;
+    private TextView movieAwardsTextView;
+    private TextView movieMetascoreTextView;
     private TextView movieScoreTextView;
     private TextView moviePlotTextView;
+    private TextView movieDirectorsTextView;
+    private TextView movieWritersTextView;
+    private TextView movieStarsTextView;
     private ImageView imageView;
     private MovieFragmentViewModel viewModel;
     private FloatingActionButton fab;
@@ -70,7 +76,13 @@ public class MovieFragment extends Fragment {
                 movieTitleTextView.setText(titleResponse.getTitle());
                 movieYearTextView.setText(String.valueOf(titleResponse.getYear()));
                 movieRuntimeTextView.setText(String.valueOf(titleResponse.getRuntimeMins()) + "min");
-                movieScoreTextView.setText("IMDB Score: " + titleResponse.getImDBRating());
+                movieGenresTextView.setText(titleResponse.getGenres());
+                movieAwardsTextView.setText(titleResponse.getAwards());
+                movieScoreTextView.setText(titleResponse.getImDBRating());
+                movieMetascoreTextView.setText(titleResponse.getMetacriticRating());
+                movieDirectorsTextView.setText(titleResponse.getDirectors());
+                movieWritersTextView.setText(titleResponse.getWriters());
+                movieStarsTextView.setText(titleResponse.getStars());
                 moviePlotTextView.setText(titleResponse.getPlot());
                 Picasso.with(getContext())
                         .load(titleResponse.getImage())
@@ -86,7 +98,13 @@ public class MovieFragment extends Fragment {
         movieYearTextView = view.findViewById(R.id.movieYearTextView);
         movieRuntimeTextView = view.findViewById(R.id.movieRunTimeTextView);
         movieScoreTextView = view.findViewById(R.id.movieIMDBScoreTextView);
-        moviePlotTextView = view.findViewById(R.id.moviePlotTextView);
+        moviePlotTextView = view.findViewById(R.id.moviePlotEntryTextView);
+        movieGenresTextView = view.findViewById(R.id.movieGenreTextView);
+        movieAwardsTextView = view.findViewById(R.id.movieAwardsTextView);
+        movieMetascoreTextView = view.findViewById(R.id.movieMetaScoreTextView);
+        movieDirectorsTextView = view.findViewById(R.id.movieDirectorsListTextView);
+        movieWritersTextView = view.findViewById(R.id.movieWritersListTextView);
+        movieStarsTextView = view.findViewById(R.id.movieStarListTextView);
         imageView = view.findViewById(R.id.movieImageView);
         fab = view.findViewById(R.id.floatingButtonMovieFragment);
     }

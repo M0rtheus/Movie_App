@@ -50,7 +50,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
                 .load(list.get(position).getImage())
                 .into(holder.imageView);
         holder.titleTextView.setText(list.get(position).getTitle());
-        holder.scoreTextView.setText("IMDB Score: " + list.get(position).getImDbRating());
+        holder.scoreTextView.setText(list.get(position).getImDbRating() + "/10");
+        holder.yearTextView.setText(String.valueOf(list.get(position).getYear()));
 
     }
 
@@ -64,6 +65,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
         private ImageView imageView;
         private TextView titleTextView;
         private TextView scoreTextView;
+        private TextView yearTextView;
         private FloatingActionButton floatingActionButton;
 
         public FavoritesViewHolder(@NonNull View itemView) {
@@ -71,6 +73,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
             imageView = itemView.findViewById(R.id.favoritesImageView);
             titleTextView = itemView.findViewById(R.id.favoritesTitleTextView);
             scoreTextView = itemView.findViewById(R.id.favoritesIMDBScoreTextView);
+            yearTextView = itemView.findViewById(R.id.favoritesYearTextView);
             floatingActionButton = itemView.findViewById(R.id.deleteButton);
             itemView.setOnClickListener(this);
             floatingActionButton.setOnClickListener(this);

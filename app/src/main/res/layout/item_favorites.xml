@@ -30,13 +30,35 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:text="Movie Title"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/favoritesImageView"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/favoritesYearTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="2010"
+            android:textColor="@color/darker_white"
+            app:layout_constraintStart_toEndOf="@+id/favoritesImageView"
+            app:layout_constraintTop_toBottomOf="@+id/favoritesTitleTextView" />
+
+        <TextView
+            android:id="@+id/favoritesIMDBTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="IMDB"
+            android:textColor="@color/gold"
+            app:layout_constraintStart_toEndOf="@+id/favoritesImageView"
+            app:layout_constraintTop_toBottomOf="@+id/favoritesYearTextView" />
 
         <TextView
             android:id="@+id/favoritesIMDBScoreTextView"
@@ -44,10 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="IMDB: 10"
+            android:text="10"
             android:textColor="@color/darker_white"
-            app:layout_constraintStart_toEndOf="@+id/favoritesImageView"
-            app:layout_constraintTop_toBottomOf="@+id/favoritesTitleTextView" />
+            app:layout_constraintStart_toEndOf="@+id/favoritesIMDBTextView"
+            app:layout_constraintTop_toBottomOf="@+id/favoritesYearTextView" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/deleteButton"
