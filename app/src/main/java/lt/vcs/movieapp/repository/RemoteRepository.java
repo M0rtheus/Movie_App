@@ -15,10 +15,12 @@ import lt.vcs.movieapp.api.IMDBApiService;
 import lt.vcs.movieapp.api.apimodels.items.ItemComingSoon;
 import lt.vcs.movieapp.api.apimodels.items.ItemInTheaters;
 import lt.vcs.movieapp.api.apimodels.items.ItemMostPopular;
+import lt.vcs.movieapp.api.apimodels.items.ItemSearch;
 import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
 import lt.vcs.movieapp.api.apimodels.responses.ComingSoonResponse;
 import lt.vcs.movieapp.api.apimodels.responses.InTheatersResponse;
 import lt.vcs.movieapp.api.apimodels.responses.MostPopularResponse;
+import lt.vcs.movieapp.api.apimodels.responses.SearchResponse;
 import lt.vcs.movieapp.api.apimodels.responses.TitleResponse;
 import lt.vcs.movieapp.api.apimodels.responses.TopMoviesResponse;
 import retrofit2.Call;
@@ -32,6 +34,7 @@ public class RemoteRepository {
     private MutableLiveData<List<ItemMostPopular>> mostPopularsList = new MutableLiveData<>();
     private MutableLiveData<List<ItemComingSoon>> comingSoonList = new MutableLiveData<>();
     private MutableLiveData<List<ItemInTheaters>> inTheatersList = new MutableLiveData<>();
+    private MutableLiveData<List<ItemSearch>> searchList = new MutableLiveData<>();
 
 
     public LiveData<TitleResponse> getTitle(String id) {
@@ -130,6 +133,26 @@ public class RemoteRepository {
         call.enqueue(callback);
 
         return mostPopularsList;
+    }
+
+    public LiveData<List<ItemSearch>> getSearchList(String expresion) {
+        IMDBApiService service = IMDBApi.getUserInstance().create(IMDBApiService.class);
+        Call<SearchResponse> call = service.getSearch(expresion);
+        Callback<SearchResponse> callback = new Callback<SearchResponse>() {
+            @Override
+            public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                searchList.postValue(response.body().getResults());
+                Log.i("app_test", "onResponse: " + response.body());
+            }
+
+            @Override
+            public void onFailure(Call<SearchResponse> call, Throwable t) {
+                call.cancel();
+            }
+        };
+        call.enqueue(callback);
+
+        return searchList;
     }
 
 }

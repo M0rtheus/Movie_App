@@ -5,6 +5,7 @@ import static lt.vcs.movieapp.utilities.Constants.API_KEY;
 import lt.vcs.movieapp.api.apimodels.responses.ComingSoonResponse;
 import lt.vcs.movieapp.api.apimodels.responses.InTheatersResponse;
 import lt.vcs.movieapp.api.apimodels.responses.MostPopularResponse;
+import lt.vcs.movieapp.api.apimodels.responses.SearchResponse;
 import lt.vcs.movieapp.api.apimodels.responses.TitleResponse;
 import lt.vcs.movieapp.api.apimodels.responses.TopMoviesResponse;
 import retrofit2.Call;
@@ -27,5 +28,8 @@ public interface IMDBApiService {
 
     @GET("ComingSoon/" + API_KEY)
     Call<ComingSoonResponse> getComingSoon();
+
+    @GET("SearchMovie/" + API_KEY + "/{expression}")
+    Call<SearchResponse> getSearch(@Path("expression") String expression);
 
 }

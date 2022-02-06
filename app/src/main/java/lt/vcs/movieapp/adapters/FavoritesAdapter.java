@@ -95,13 +95,10 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
 
     public void setOnItemClickListener(ClickListener clickListener) {
         FavoritesAdapter.clickListener = clickListener;
-        Log.i("app_test", "setOnItemClickListener: ");
     }
 
     public void setOnDeleteClickListener(DeleteClickListener clickListener) {
         FavoritesAdapter.deleteClickListener = clickListener;
-        Log.i("app_test", "setOnDeleteClickListener: ");
     }
-
 
 }

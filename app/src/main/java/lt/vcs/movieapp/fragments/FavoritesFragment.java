@@ -65,7 +65,6 @@ public class FavoritesFragment extends Fragment {
             @Override
             public void onItemClick(int position, View view) {
                 viewModel.deleteItem(favoriteItemsList.get(position).getDbId());
-                Log.i("app_test", "onItemClick: " + position);
             }
         });
     }
