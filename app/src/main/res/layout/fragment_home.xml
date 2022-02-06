@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".fragments.HomeFragment">
 
 
@@ -19,7 +20,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Top Movies"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +43,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Most Popular"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topMoviesRecyclerView" />
@@ -66,7 +67,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="In Theaters"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mostPopularRecyclerView" />
@@ -90,7 +91,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Coming Soon"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inTheatersRecyclerView" />

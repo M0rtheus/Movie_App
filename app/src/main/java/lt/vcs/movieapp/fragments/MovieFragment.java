@@ -69,7 +69,7 @@ public class MovieFragment extends Fragment {
             public void onChanged(TitleResponse titleResponse) {
                 movieTitleTextView.setText(titleResponse.getTitle());
                 movieYearTextView.setText(String.valueOf(titleResponse.getYear()));
-                movieRuntimeTextView.setText(String.valueOf(titleResponse.getRuntimeMins()));
+                movieRuntimeTextView.setText(String.valueOf(titleResponse.getRuntimeMins()) + "min");
                 movieScoreTextView.setText("IMDB Score: " + titleResponse.getImDBRating());
                 moviePlotTextView.setText(titleResponse.getPlot());
                 Picasso.with(getContext())

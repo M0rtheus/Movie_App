@@ -23,7 +23,7 @@ import lt.vcs.movieapp.data.FavoriteItem;
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder> {
 
     private static ClickListener clickListener;
-    private static  DeleteClickListener deleteClickListener;
+    private static DeleteClickListener deleteClickListener;
     private List<FavoriteItem> list;
     private Context context;
 
@@ -49,13 +49,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
         Picasso.with(context)
                 .load(list.get(position).getImage())
                 .into(holder.imageView);
-
-        if (list.get(position).getTitle().length() < 25) {
-            holder.titleTextView.setText(list.get(position).getTitle());
-        } else {
-            holder.titleTextView.setText(list.get(position).getTitle().substring(0, 25) + "...");
-        }
-
+        holder.titleTextView.setText(list.get(position).getTitle());
         holder.scoreTextView.setText("IMDB Score: " + list.get(position).getImDbRating());
 
     }
@@ -84,9 +78,9 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
 
         @Override
         public void onClick(View view) {
-            if (view == itemView){
+            if (view == itemView) {
                 FavoritesAdapter.clickListener.onItemClick(getAbsoluteAdapterPosition(), view);
-            } else if (view == floatingActionButton){
+            } else if (view == floatingActionButton) {
                 FavoritesAdapter.deleteClickListener.onItemClick(getAbsoluteAdapterPosition(), view);
             }
 

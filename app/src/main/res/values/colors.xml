@@ -10,4 +10,9 @@
     <color name="green">#FF32CD32</color>
     <color name="red">#FFFF0000</color>
     <color name="yellow">#FFFFFF00</color>
+    <color name="grey">#FF2A2726</color>
+    <color name="darker_grey">#FF1D1A1A</color>
+    <color name="gold">#FFF0CB26</color>
+    <color name="darker_white">#FFD2D2D2</color>
+
 </resources>
