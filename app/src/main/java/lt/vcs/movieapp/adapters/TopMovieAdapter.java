@@ -51,7 +51,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
 
         holder.rankTextView.setText(String.valueOf(list.get(position).getRank()));
         holder.scoreTextView.setText(list.get(position).getImDbRating());
-
+        holder.yearTextView.setText(String.valueOf(list.get(position).getYear()));
         if (list.get(position).getTitle().length() < 20) {
             holder.titleTextView.setText(list.get(position).getTitle());
         } else {
@@ -70,6 +70,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
         private TextView titleTextView;
         private TextView scoreTextView;
         private TextView rankTextView;
+        private TextView yearTextView;
 
 
         public TopMoviesViewHolder(@NonNull View itemView) {
@@ -78,6 +79,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
             rankTextView = itemView.findViewById(R.id.topMovieRankTextView);
             scoreTextView = itemView.findViewById(R.id.topMovieIMDBScoreTextView);
             titleTextView = itemView.findViewById(R.id.topMovieTitleTextView);
+            yearTextView = itemView.findViewById(R.id.topMovieYearTextView);
             itemView.setOnClickListener(this);
         }
 

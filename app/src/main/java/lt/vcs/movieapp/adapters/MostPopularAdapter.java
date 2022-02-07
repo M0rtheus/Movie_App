@@ -70,12 +70,11 @@ public class MostPopularAdapter extends RecyclerView.Adapter<MostPopularAdapter.
         }
     }
 
-    public static boolean isInteger(String str) {
+    public static boolean isInteger(String input) {
         try {
-            Integer.parseInt( str );
+            Integer.parseInt(input);
             return true;
-        }
-        catch( Exception e ) {
+        } catch (Exception e) {
             return false;
         }
     }
