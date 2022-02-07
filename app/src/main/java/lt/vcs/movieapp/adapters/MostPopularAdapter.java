@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -50,12 +51,32 @@ public class MostPopularAdapter extends RecyclerView.Adapter<MostPopularAdapter.
 
         holder.rankUpDownTextView.setText(list.get(position).getRankUpDown());
 
+        if (isInteger(list.get(position).getRankUpDown())) {
+            if (Integer.parseInt(list.get(position).getRankUpDown()) > 0) {
+                holder.rankUpDownTextView.setTextColor(ContextCompat.getColor(context, R.color.green));
+            } else if (Integer.parseInt(list.get(position).getRankUpDown()) < 0) {
+                holder.rankUpDownTextView.setTextColor(ContextCompat.getColor(context, R.color.red));
+            } else if (Integer.parseInt(list.get(position).getRankUpDown()) == 0) {
+                holder.rankUpDownTextView.setTextColor(ContextCompat.getColor(context, R.color.yellow));
+            }
+        }
+
         holder.scoreTextView.setText(list.get(position).getImDbRating());
 
         if (list.get(position).getTitle().length() < 20) {
             holder.titleTextView.setText(list.get(position).getTitle());
         } else {
             holder.titleTextView.setText(list.get(position).getTitle().substring(0, 20) + "...");
+        }
+    }
+
+    public static boolean isInteger(String str) {
+        try {
+            Integer.parseInt( str );
+            return true;
+        }
+        catch( Exception e ) {
+            return false;
         }
     }
 
