@@ -57,10 +57,10 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         viewModel = new ViewModelProvider(this).get(HomeFragmentViewModel.class);
-//        setTopMoviesRecyclerView(view);
+        setTopMoviesRecyclerView(view);
 //        setMostPopularRecyclerView(view);
 //        setInTheatersRecyclerView(view);
-        setComingSoonRecyclerView(view);
+//        setComingSoonRecyclerView(view);
         return view;
     }
 

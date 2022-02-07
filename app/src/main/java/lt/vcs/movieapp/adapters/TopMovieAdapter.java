@@ -49,13 +49,13 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
                 .load(list.get(position).getImage())
                 .into(holder.imageView);
 
-        holder.rankTextView.setText("Rank: " + list.get(position).getRank());
-        holder.scoreTextView.setText("IMDB Score: " + list.get(position).getImDbRating());
+        holder.rankTextView.setText(String.valueOf(list.get(position).getRank()));
+        holder.scoreTextView.setText(list.get(position).getImDbRating());
 
-        if (list.get(position).getTitle().length() < 25) {
+        if (list.get(position).getTitle().length() < 20) {
             holder.titleTextView.setText(list.get(position).getTitle());
         } else {
-            holder.titleTextView.setText(list.get(position).getTitle().substring(0, 25) + "...");
+            holder.titleTextView.setText(list.get(position).getTitle().substring(0, 20) + "...");
         }
     }
 

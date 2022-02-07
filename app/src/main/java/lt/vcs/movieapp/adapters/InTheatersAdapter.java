@@ -50,10 +50,10 @@ public class InTheatersAdapter extends RecyclerView.Adapter<InTheatersAdapter.In
         holder.yearTextView.setText(String.valueOf(list.get(position).getYear()));
         holder.dateTextView.setText(list.get(position).getReleaseState());
 
-        if (list.get(position).getTitle().length() < 25) {
+        if (list.get(position).getTitle().length() < 20) {
             holder.titleTextView.setText(list.get(position).getTitle());
         } else {
-            holder.titleTextView.setText(list.get(position).getTitle().substring(0, 25) + "...");
+            holder.titleTextView.setText(list.get(position).getTitle().substring(0, 20) + "...");
         }
     }
 

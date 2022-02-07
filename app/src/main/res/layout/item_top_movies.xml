@@ -23,31 +23,9 @@
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/topMovieRankTextView"
+            app:layout_constraintBottom_toTopOf="@+id/topMovieTitleTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/topMovieRankTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Rank: 1"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/topMovieIMDBScoreTextView"
-            app:layout_constraintStart_toStartOf="@+id/topMovieImageView" />
-
-        <TextView
-            android:id="@+id/topMovieIMDBScoreTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="IMDB: 10"
-            android:textColor="@color/darker_white"
-            app:layout_constraintBottom_toTopOf="@+id/topMovieTitleTextView"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/topMovieTitleTextView"
@@ -56,7 +34,52 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:text="Movie Title"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/topMovieRankText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/topMovieRankTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="1"
             android:textColor="@color/darker_white"
+            app:layout_constraintBottom_toTopOf="@+id/topMovieIMDBTextView"
+            app:layout_constraintStart_toEndOf="@+id/topMovieRankText" />
+
+        <TextView
+            android:id="@+id/topMovieRankText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Rank"
+            android:textColor="@color/darker_white"
+            app:layout_constraintBottom_toTopOf="@+id/topMovieIMDBTextView"
+            app:layout_constraintStart_toStartOf="@+id/topMovieImageView" />
+
+        <TextView
+            android:id="@+id/topMovieIMDBScoreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="8.5/10"
+            android:textColor="@color/darker_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/topMovieIMDBTextView" />
+
+        <TextView
+            android:id="@+id/topMovieIMDBTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="IMDB"
+            android:textColor="@color/gold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

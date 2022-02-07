@@ -23,9 +23,20 @@
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/mostPopularRankTextView"
+            app:layout_constraintBottom_toTopOf="@+id/mostPopularTitleTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mostPopularRankText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Rank"
+            android:textColor="@color/darker_white"
+            app:layout_constraintBottom_toTopOf="@+id/mostPopularIMDBTextView"
+            app:layout_constraintStart_toStartOf="@+id/mostPopularImageView" />
 
         <TextView
             android:id="@+id/mostPopularRankTextView"
@@ -33,10 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Rank: 1"
+            android:text="1"
             android:textColor="@color/darker_white"
-            app:layout_constraintBottom_toTopOf="@+id/mostPopularIMDBScoreTextView"
-            app:layout_constraintStart_toStartOf="@+id/mostPopularImageView" />
+            app:layout_constraintBottom_toTopOf="@+id/mostPopularIMDBTextView"
+            app:layout_constraintStart_toEndOf="@+id/mostPopularRankText" />
 
         <TextView
             android:id="@+id/mostPopularRankUpDownTextView"
@@ -46,7 +57,7 @@
             android:layout_marginBottom="8dp"
             android:text="+1"
             android:textColor="@color/darker_white"
-            app:layout_constraintBottom_toTopOf="@+id/mostPopularIMDBScoreTextView"
+            app:layout_constraintBottom_toTopOf="@+id/mostPopularIMDBTextView"
             app:layout_constraintStart_toEndOf="@+id/mostPopularRankTextView" />
 
         <TextView
@@ -55,9 +66,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
-            android:text="IMDB: 10"
+            android:text="10/10"
             android:textColor="@color/darker_white"
-            app:layout_constraintBottom_toTopOf="@+id/mostPopularTitleTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mostPopularIMDBTextView" />
+
+        <TextView
+            android:id="@+id/mostPopularIMDBTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="IMDB"
+            android:textColor="@color/gold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -67,12 +89,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:text="Movie Title"
+            android:textSize="16sp"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/mostPopularRankTextView"
             app:layout_constraintStart_toStartOf="parent" />
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
