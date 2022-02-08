@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import lt.vcs.movieapp.R;
-import lt.vcs.movieapp.api.apimodels.items.ItemComingSoon;
 import lt.vcs.movieapp.api.apimodels.items.ItemInTheaters;
 
 public class InTheatersAdapter extends RecyclerView.Adapter<InTheatersAdapter.InTheatersViewHolder> {

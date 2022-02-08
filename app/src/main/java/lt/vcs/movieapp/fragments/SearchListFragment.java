@@ -1,6 +1,9 @@
 package lt.vcs.movieapp.fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
@@ -8,10 +11,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +20,6 @@ import lt.vcs.movieapp.adapters.ClickListener;
 import lt.vcs.movieapp.adapters.SearchAdapter;
 import lt.vcs.movieapp.api.apimodels.items.ItemSearch;
 import lt.vcs.movieapp.data.RecentItem;
-import lt.vcs.movieapp.viewmodels.RecentFragmentViewModel;
 import lt.vcs.movieapp.viewmodels.SearchFragmentViewModel;
 
 
@@ -79,7 +77,7 @@ public class SearchListFragment extends Fragment {
                         , searchList.get(position).getImage(), searchList.get(position).getTitle()
                         , searchList.get(position).getDescription()));
 
-                if (searchFragmentViewModel.getRecentCount() > 9){
+                if (searchFragmentViewModel.getRecentCount() > 9) {
                     searchFragmentViewModel.deleteFirstItem();
                 }
 

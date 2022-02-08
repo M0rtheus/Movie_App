@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class SearchFragmentViewModel extends AndroidViewModel {
         return remoteRepository.getSearchList(expresion);
     }
 
-    public int getRecentCount(){
+    public int getRecentCount() {
         return recentRepository.getCount();
     }
 

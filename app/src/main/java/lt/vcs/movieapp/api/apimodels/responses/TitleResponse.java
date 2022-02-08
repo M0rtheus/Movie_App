@@ -118,5 +118,4 @@ public class TitleResponse {
         return metacriticRating;
     }
 
-
 }

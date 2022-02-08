@@ -7,22 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.Collections;
-import java.util.List;
 
 import lt.vcs.movieapp.R;
-import lt.vcs.movieapp.adapters.ClickListener;
-import lt.vcs.movieapp.adapters.RecentAdapter;
-import lt.vcs.movieapp.adapters.SearchAdapter;
-import lt.vcs.movieapp.api.apimodels.items.ItemSearch;
-import lt.vcs.movieapp.data.RecentItem;
-import lt.vcs.movieapp.viewmodels.SearchFragmentViewModel;
 
 public class SearchFragment extends Fragment {
 
@@ -63,6 +49,4 @@ public class SearchFragment extends Fragment {
             }
         });
     }
-
-
 }

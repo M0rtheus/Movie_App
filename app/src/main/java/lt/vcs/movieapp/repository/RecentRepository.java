@@ -7,7 +7,6 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 import lt.vcs.movieapp.data.AppDatabase;
-import lt.vcs.movieapp.data.FavoriteItem;
 import lt.vcs.movieapp.data.RecentItem;
 import lt.vcs.movieapp.data.RecentItemDAO;
 
@@ -24,15 +23,15 @@ public class RecentRepository {
         return recentItemDAO.getAllItems();
     }
 
-    public void deleteFirstItem(){
+    public void deleteFirstItem() {
         recentItemDAO.deleteFirstItem();
     }
 
-    public int getCount(){
+    public int getCount() {
         return recentItemDAO.getCount();
     }
 
-    public void insertItem(RecentItem recentItem){
+    public void insertItem(RecentItem recentItem) {
         recentItemDAO.insertItem(recentItem);
     }
 

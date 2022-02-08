@@ -5,10 +5,10 @@ import static lt.vcs.movieapp.utilities.Constants.FAVORITES_TABLE_NAME;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = FAVORITES_TABLE_NAME)
+@Entity(tableName = FAVORITES_TABLE_NAME)
 public class FavoriteItem {
 
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     private int dbId;
     private String id;
     private String title;
@@ -16,7 +16,7 @@ public class FavoriteItem {
     private String image;
     private String imDbRating;
 
-    public FavoriteItem( String id, String title, long year, String image, String imDbRating) {
+    public FavoriteItem(String id, String title, long year, String image, String imDbRating) {
         this.id = id;
         this.title = title;
         this.year = year;

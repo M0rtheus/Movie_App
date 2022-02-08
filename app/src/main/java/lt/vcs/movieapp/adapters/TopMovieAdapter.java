@@ -8,8 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -18,7 +16,6 @@ import java.util.List;
 
 import lt.vcs.movieapp.R;
 import lt.vcs.movieapp.api.apimodels.items.ItemTopMovies;
-import lt.vcs.movieapp.fragments.MovieFragment;
 
 public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMoviesViewHolder> {
 
@@ -71,7 +68,6 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.TopMov
         private TextView scoreTextView;
         private TextView rankTextView;
         private TextView yearTextView;
-
 
         public TopMoviesViewHolder(@NonNull View itemView) {
             super(itemView);

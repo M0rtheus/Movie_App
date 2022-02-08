@@ -38,7 +38,6 @@ public class MovieFragment extends Fragment {
     private FloatingActionButton fab;
     private String titleId;
 
-
     public MovieFragment(String titleId) {
         this.titleId = titleId;
     }

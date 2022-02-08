@@ -1,7 +1,6 @@
 package lt.vcs.movieapp.repository;
 
 import android.app.Application;
-import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
@@ -25,16 +24,15 @@ public class FavoriteRepository {
         return favoriteItemDAO.getAllItems();
     }
 
-    public List<String> getAllIMDBIds (){
+    public List<String> getAllIMDBIds() {
         return favoriteItemDAO.getAllIMDBIds();
     }
 
-    public void deleteItem(int dbId){
+    public void deleteItem(int dbId) {
         favoriteItemDAO.deleteItem(dbId);
     }
 
-
-    public void insertItem(FavoriteItem favoriteItem){
+    public void insertItem(FavoriteItem favoriteItem) {
         favoriteItemDAO.insertItem(favoriteItem);
     }
 

@@ -18,8 +18,8 @@ import androidx.room.RoomDatabase;
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract FavoriteItemDAO favoriteItemDAO();
-    public abstract RecentItemDAO recentItemDAO();
 
+    public abstract RecentItemDAO recentItemDAO();
 
     private static AppDatabase instance;
 

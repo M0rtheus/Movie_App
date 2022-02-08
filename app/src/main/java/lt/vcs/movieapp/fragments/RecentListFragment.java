@@ -23,7 +23,6 @@ import lt.vcs.movieapp.viewmodels.RecentFragmentViewModel;
 
 public class RecentListFragment extends Fragment {
 
-
     private RecyclerView recentRecyclerView;
     private RecentAdapter recentAdapter;
     private LiveData<List<RecentItem>> recentLiveList;
@@ -34,7 +33,6 @@ public class RecentListFragment extends Fragment {
     public RecentListFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
