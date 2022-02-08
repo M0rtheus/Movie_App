@@ -1,6 +1,5 @@
 package lt.vcs.movieapp.fragments;
 
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,6 @@ import lt.vcs.movieapp.adapters.ClickListener;
 import lt.vcs.movieapp.adapters.RecentAdapter;
 import lt.vcs.movieapp.data.RecentItem;
 import lt.vcs.movieapp.viewmodels.RecentFragmentViewModel;
-import lt.vcs.movieapp.viewmodels.SearchFragmentViewModel;
 
 public class RecentListFragment extends Fragment {
 
