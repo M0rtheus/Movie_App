@@ -41,7 +41,7 @@ public class MovieFragmentViewModel extends AndroidViewModel {
         return favoriteRepository.getAllIMDBIds();
     }
 
-    public void fetchTitle(TitleResponse title) {
+    public void setTitle(TitleResponse title) {
         this.title = title;
     }
 

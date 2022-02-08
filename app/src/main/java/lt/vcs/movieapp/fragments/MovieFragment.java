@@ -88,7 +88,7 @@ public class MovieFragment extends Fragment {
                 Picasso.with(getContext())
                         .load(titleResponse.getImage())
                         .into(imageView);
-                viewModel.fetchTitle(titleResponse);
+                viewModel.setTitle(titleResponse);
             }
         });
 
