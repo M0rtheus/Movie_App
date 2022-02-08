@@ -1,7 +1,5 @@
 package lt.vcs.movieapp.repository;
 
-import static lt.vcs.movieapp.utilities.Constants.LOG_TAG;
-
 import android.util.Log;
 
 import androidx.annotation.NonNull;

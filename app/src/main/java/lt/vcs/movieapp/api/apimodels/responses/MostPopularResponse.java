@@ -11,10 +11,4 @@ public class MostPopularResponse {
         return items;
     }
 
-    @Override
-    public String toString() {
-        return "MostPopularResponse{" +
-                "items=" + items +
-                '}';
-    }
 }

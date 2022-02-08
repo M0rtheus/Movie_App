@@ -42,15 +42,4 @@ public class ItemTopMovies {
         return imDbRating;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id='" + id + '\'' +
-                ", rank=" + rank +
-                ", title='" + title + '\'' +
-                ", year=" + year +
-                ", image='" + image + '\'' +
-                ", imDbRating='" + imDbRating + '\'' +
-                '}';
-    }
 }

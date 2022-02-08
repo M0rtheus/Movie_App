@@ -12,10 +12,4 @@ public class SearchResponse {
         return results;
     }
 
-    @Override
-    public String toString() {
-        return "SearchResponse{" +
-                "results=" + results +
-                '}';
-    }
 }

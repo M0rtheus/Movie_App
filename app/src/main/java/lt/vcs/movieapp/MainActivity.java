@@ -12,10 +12,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import lt.vcs.movieapp.fragments.FavoritesFragment;
 import lt.vcs.movieapp.fragments.HomeFragment;
-import lt.vcs.movieapp.fragments.MovieFragment;
 import lt.vcs.movieapp.fragments.SearchFragment;
-import lt.vcs.movieapp.repository.LocalRepository;
-import lt.vcs.movieapp.repository.RemoteRepository;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -35,14 +35,4 @@ public class ItemInTheaters {
         return image;
     }
 
-    @Override
-    public String toString() {
-        return "ItemInTheaters{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", year='" + year + '\'' +
-                ", releaseState='" + releaseState + '\'' +
-                ", image='" + image + '\'' +
-                '}';
-    }
 }

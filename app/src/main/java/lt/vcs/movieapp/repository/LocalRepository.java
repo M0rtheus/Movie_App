@@ -21,7 +21,7 @@ public class LocalRepository {
         favoriteItemDAO = appDatabase.favoriteItemDAO();
     }
 
-    public LiveData<List<FavoriteItem>> getAllItems(){
+    public LiveData<List<FavoriteItem>> getAllItems() {
         return favoriteItemDAO.getAllItems();
     }
 

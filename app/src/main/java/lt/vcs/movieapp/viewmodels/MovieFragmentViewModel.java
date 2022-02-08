@@ -26,22 +26,22 @@ public class MovieFragmentViewModel extends AndroidViewModel {
     }
 
     public LiveData<TitleResponse> getTitle(String id) {
-        if (liveTitle == null){
+        if (liveTitle == null) {
             liveTitle = remoteRepository.getTitle(id);
         }
         return liveTitle;
     }
 
-    public void insertItem(){
+    public void insertItem() {
         localRepository.insertItem(new FavoriteItem(title.getImDBid(), title.getTitle(),
-                title.getYear(),title.getImage(), title.getImDBRating()));
+                title.getYear(), title.getImage(), title.getImDBRating()));
     }
 
-    public List<String> getAllIMDBIds (){
+    public List<String> getAllIMDBIds() {
         return localRepository.getAllIMDBIds();
     }
 
-    public  void fetchTitle(TitleResponse title){
+    public void fetchTitle(TitleResponse title) {
         this.title = title;
     }
 
@@ -49,7 +49,7 @@ public class MovieFragmentViewModel extends AndroidViewModel {
         return title;
     }
 
-    public void deleteAllItems(){
+    public void deleteAllItems() {
         localRepository.deleteAllItems();
     }
 

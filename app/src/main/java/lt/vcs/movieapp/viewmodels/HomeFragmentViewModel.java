@@ -23,29 +23,29 @@ public class HomeFragmentViewModel extends ViewModel {
         this.remoteRepository = new RemoteRepository();
     }
 
-    public LiveData<List<ItemTopMovies>> getTopMoviesList(){
-        if (topMoviesList == null){
+    public LiveData<List<ItemTopMovies>> getTopMoviesList() {
+        if (topMoviesList == null) {
             topMoviesList = remoteRepository.getTopMoviesList();
         }
         return topMoviesList;
     }
 
-    public LiveData<List<ItemMostPopular>> getMostPopularsList(){
-        if (mostPopularsList == null){
+    public LiveData<List<ItemMostPopular>> getMostPopularsList() {
+        if (mostPopularsList == null) {
             mostPopularsList = remoteRepository.getMostPopularsList();
         }
         return mostPopularsList;
     }
 
     public LiveData<List<ItemInTheaters>> getInTheatersList() {
-        if (inTheatersList == null){
+        if (inTheatersList == null) {
             inTheatersList = remoteRepository.getInTheaters();
         }
         return inTheatersList;
     }
 
     public LiveData<List<ItemComingSoon>> getComingSoonList() {
-        if (comingSoonList == null){
+        if (comingSoonList == null) {
             comingSoonList = remoteRepository.getComingSoon();
         }
         return comingSoonList;

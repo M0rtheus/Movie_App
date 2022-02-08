@@ -1,7 +1,6 @@
 package lt.vcs.movieapp.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +59,7 @@ public class FavoritesFragment extends Fragment {
         return view;
     }
 
-    private void onDeleteClick(){
+    private void onDeleteClick() {
         favoritesAdapter.setOnDeleteClickListener(new DeleteClickListener() {
             @Override
             public void onItemClick(int position, View view) {

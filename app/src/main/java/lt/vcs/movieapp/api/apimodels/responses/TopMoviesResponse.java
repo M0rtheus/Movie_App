@@ -11,10 +11,4 @@ public class TopMoviesResponse {
         return items;
     }
 
-    @Override
-    public String toString() {
-        return "TopMoviesResponse{" +
-                "topMovies=" + items +
-                '}';
-    }
 }

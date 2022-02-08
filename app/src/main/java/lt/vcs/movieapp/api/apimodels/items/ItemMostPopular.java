@@ -47,16 +47,4 @@ public class ItemMostPopular {
         return imDbRating;
     }
 
-    @Override
-    public String toString() {
-        return "ItemMostPopular{" +
-                "id='" + id + '\'' +
-                ", rank=" + rank +
-                ", rankUpDown=" + rankUpDown +
-                ", title='" + title + '\'' +
-                ", year=" + year +
-                ", image='" + image + '\'' +
-                ", imDbRating='" + imDbRating + '\'' +
-                '}';
-    }
 }

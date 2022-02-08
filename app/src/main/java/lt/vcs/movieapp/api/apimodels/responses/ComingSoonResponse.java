@@ -11,10 +11,4 @@ public class ComingSoonResponse {
         return items;
     }
 
-    @Override
-    public String toString() {
-        return "ComingSoonResponse{" +
-                "items=" + items +
-                '}';
-    }
 }

@@ -118,13 +118,5 @@ public class TitleResponse {
         return metacriticRating;
     }
 
-    @Override
-    public String toString() {
-        return "Title{" +
-                "imDBid='" + imDBid + '\'' +
-                ", title='" + title + '\'' +
-                ", year=" + year +
-                '}';
-    }
 
 }

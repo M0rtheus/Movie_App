@@ -33,8 +33,10 @@ public class IMDBApi {
             return new Converter<ResponseBody, Object>() {
                 @Override
                 public Object convert(ResponseBody body) throws IOException {
-                    if (body.contentLength() == 0) return null;
-                    return delegate.convert(body);                }
+                    if (body.contentLength() == 0)
+                        return null;
+                    return delegate.convert(body);
+                }
             };
         }
     }

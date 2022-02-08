@@ -32,6 +32,7 @@ public class MovieFragment extends Fragment {
     private TextView movieDirectorsTextView;
     private TextView movieWritersTextView;
     private TextView movieStarsTextView;
+    private TextView movieVotesTextView;
     private ImageView imageView;
     private MovieFragmentViewModel viewModel;
     private FloatingActionButton fab;
@@ -84,6 +85,7 @@ public class MovieFragment extends Fragment {
                 movieWritersTextView.setText(titleResponse.getWriters());
                 movieStarsTextView.setText(titleResponse.getStars());
                 moviePlotTextView.setText(titleResponse.getPlot());
+                movieVotesTextView.setText(titleResponse.getImDBRatingVotes());
                 Picasso.with(getContext())
                         .load(titleResponse.getImage())
                         .into(imageView);
@@ -105,6 +107,7 @@ public class MovieFragment extends Fragment {
         movieDirectorsTextView = view.findViewById(R.id.movieDirectorsListTextView);
         movieWritersTextView = view.findViewById(R.id.movieWritersListTextView);
         movieStarsTextView = view.findViewById(R.id.movieStarListTextView);
+        movieVotesTextView = view.findViewById(R.id.movieIMDBVotesTextView);
         imageView = view.findViewById(R.id.movieImageView);
         fab = view.findViewById(R.id.floatingButtonMovieFragment);
     }

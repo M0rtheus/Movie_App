@@ -35,14 +35,4 @@ public class ItemSearch {
         return description;
     }
 
-    @Override
-    public String toString() {
-        return "ItemSearch{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", resultType='" + resultType + '\'' +
-                ", image='" + image + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

@@ -11,10 +11,4 @@ public class InTheatersResponse {
         return items;
     }
 
-    @Override
-    public String toString() {
-        return "InTheatersResponse{" +
-                "items=" + items +
-                '}';
-    }
 }

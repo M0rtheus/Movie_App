@@ -35,14 +35,4 @@ public class ItemComingSoon {
         return image;
     }
 
-    @Override
-    public String toString() {
-        return "ItemComingSoon{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", year='" + year + '\'' +
-                ", releaseState='" + releaseState + '\'' +
-                ", image='" + image + '\'' +
-                '}';
-    }
 }
