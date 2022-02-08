@@ -6,19 +6,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="250dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="20dp"
     android:layout_margin="10dp"
     app:cardBackgroundColor="@color/darker_grey"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="10dp"
     app:cardPreventCornerOverlap="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/SearchItemLayout"
+        android:id="@+id/recentItemLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/searchImageView"
+            android:id="@+id/recentImageView"
             android:layout_width="168dp"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/searchTitleTextView"
+            android:id="@+id/recentTitleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -35,20 +35,21 @@
             android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/searchImageView"
+            app:layout_constraintStart_toEndOf="@+id/recentImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/searchDescriptionTextView"
+            android:id="@+id/recentDescriptionTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="(2010) (Video)"
+            android:text="2010"
             android:textColor="@color/darker_white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/searchImageView"
-            app:layout_constraintTop_toBottomOf="@+id/searchTitleTextView" />
+            app:layout_constraintStart_toEndOf="@+id/recentImageView"
+            app:layout_constraintTop_toBottomOf="@+id/recentTitleTextView" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

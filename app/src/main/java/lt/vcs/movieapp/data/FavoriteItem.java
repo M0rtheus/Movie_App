@@ -1,11 +1,11 @@
 package lt.vcs.movieapp.data;
 
-import static lt.vcs.movieapp.utilities.Constants.DATABASE_TABLE_NAME;
+import static lt.vcs.movieapp.utilities.Constants.FAVORITES_TABLE_NAME;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = DATABASE_TABLE_NAME)
+@Entity (tableName = FAVORITES_TABLE_NAME)
 public class FavoriteItem {
 
     @PrimaryKey (autoGenerate = true)

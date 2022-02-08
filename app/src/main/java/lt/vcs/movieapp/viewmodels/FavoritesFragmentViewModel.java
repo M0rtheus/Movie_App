@@ -2,51 +2,34 @@ package lt.vcs.movieapp.viewmodels;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
 import lt.vcs.movieapp.data.FavoriteItem;
-import lt.vcs.movieapp.repository.LocalRepository;
+import lt.vcs.movieapp.repository.FavoriteRepository;
 
 public class FavoritesFragmentViewModel extends AndroidViewModel {
 
-    private LocalRepository localRepository;
-    private LiveData<List<FavoriteItem>> allItems;
+    private FavoriteRepository favoriteRepository;
 
-    public FavoritesFragmentViewModel(Application application) {
+    public FavoritesFragmentViewModel(@NonNull Application application) {
         super(application);
-        this.localRepository = new LocalRepository(application);
-        this.allItems = localRepository.getAllItems();
+        this.favoriteRepository = new FavoriteRepository(application);
     }
 
     public LiveData<List<FavoriteItem>> getAllItems() {
-        return localRepository.getAllItems();
-    }
-
-    public FavoriteItem getItem(int dbId) {
-        return localRepository.getItem(dbId);
+        return favoriteRepository.getAllItems();
     }
 
     public void deleteItem(int dbId) {
-        localRepository.deleteItem(dbId);
-    }
-
-    public void deleteAllItems() {
-        localRepository.deleteAllItems();
-    }
-
-    public int getMaxId() {
-        return localRepository.getMaxId();
+        favoriteRepository.deleteItem(dbId);
     }
 
     public void insertItem(FavoriteItem favoriteItem) {
-        localRepository.insertItem(favoriteItem);
-    }
-
-    public void insertItems(List<FavoriteItem> favoriteItems) {
-        localRepository.insertItems(favoriteItems);
+        favoriteRepository.insertItem(favoriteItem);
     }
 
 }

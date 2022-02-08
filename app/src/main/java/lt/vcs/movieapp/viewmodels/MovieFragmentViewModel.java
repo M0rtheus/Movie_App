@@ -9,19 +9,19 @@ import java.util.List;
 
 import lt.vcs.movieapp.api.apimodels.responses.TitleResponse;
 import lt.vcs.movieapp.data.FavoriteItem;
-import lt.vcs.movieapp.repository.LocalRepository;
+import lt.vcs.movieapp.repository.FavoriteRepository;
 import lt.vcs.movieapp.repository.RemoteRepository;
 
 public class MovieFragmentViewModel extends AndroidViewModel {
 
     private LiveData<TitleResponse> liveTitle;
     private RemoteRepository remoteRepository;
-    private LocalRepository localRepository;
+    private FavoriteRepository favoriteRepository;
     private TitleResponse title;
 
     public MovieFragmentViewModel(Application application) {
         super(application);
-        this.localRepository = new LocalRepository(application);
+        this.favoriteRepository = new FavoriteRepository(application);
         this.remoteRepository = new RemoteRepository();
     }
 
@@ -33,12 +33,12 @@ public class MovieFragmentViewModel extends AndroidViewModel {
     }
 
     public void insertItem() {
-        localRepository.insertItem(new FavoriteItem(title.getImDBid(), title.getTitle(),
+        favoriteRepository.insertItem(new FavoriteItem(title.getImDBid(), title.getTitle(),
                 title.getYear(), title.getImage(), title.getImDBRating()));
     }
 
     public List<String> getAllIMDBIds() {
-        return localRepository.getAllIMDBIds();
+        return favoriteRepository.getAllIMDBIds();
     }
 
     public void fetchTitle(TitleResponse title) {
@@ -47,10 +47,6 @@ public class MovieFragmentViewModel extends AndroidViewModel {
 
     public TitleResponse getTitle() {
         return title;
-    }
-
-    public void deleteAllItems() {
-        localRepository.deleteAllItems();
     }
 
 }

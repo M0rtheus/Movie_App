@@ -11,22 +11,18 @@ import lt.vcs.movieapp.data.AppDatabase;
 import lt.vcs.movieapp.data.FavoriteItem;
 import lt.vcs.movieapp.data.FavoriteItemDAO;
 
-public class LocalRepository {
+public class FavoriteRepository {
 
     private FavoriteItemDAO favoriteItemDAO;
     private LiveData<List<FavoriteItem>> allItems;
 
-    public LocalRepository(Application application) {
+    public FavoriteRepository(Application application) {
         AppDatabase appDatabase = AppDatabase.getInstance(application);
         favoriteItemDAO = appDatabase.favoriteItemDAO();
     }
 
     public LiveData<List<FavoriteItem>> getAllItems() {
         return favoriteItemDAO.getAllItems();
-    }
-
-    public FavoriteItem getItem(int dbId){
-        return favoriteItemDAO.getItem(dbId);
     }
 
     public List<String> getAllIMDBIds (){
@@ -37,20 +33,9 @@ public class LocalRepository {
         favoriteItemDAO.deleteItem(dbId);
     }
 
-    public void deleteAllItems(){
-        favoriteItemDAO.deleteAllItems();
-    }
-
-    public int getMaxId(){
-        return favoriteItemDAO.getMaxId();
-    }
 
     public void insertItem(FavoriteItem favoriteItem){
         favoriteItemDAO.insertItem(favoriteItem);
-    }
-
-    public void insertItems(List<FavoriteItem> favoriteItems){
-        favoriteItemDAO.insertItems(favoriteItems);
     }
 
 }

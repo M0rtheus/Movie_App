@@ -10,7 +10,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(
-        entities = {FavoriteItem.class},
+        entities = {FavoriteItem.class, RecentItem.class},
         version = DATABASE_VER,
         exportSchema = false
 )
@@ -18,6 +18,8 @@ import androidx.room.RoomDatabase;
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract FavoriteItemDAO favoriteItemDAO();
+    public abstract RecentItemDAO recentItemDAO();
+
 
     private static AppDatabase instance;
 
