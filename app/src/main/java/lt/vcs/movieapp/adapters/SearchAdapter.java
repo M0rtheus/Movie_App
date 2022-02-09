@@ -46,14 +46,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 .load(list.get(position).getImage())
                 .into(holder.imageView);
 
-        if (list.get(position).getTitle().length() < 25) {
-            holder.titleTextView.setText(list.get(position).getTitle());
-        } else {
-            holder.titleTextView.setText(list.get(position).getTitle().substring(0, 25) + "...");
-        }
-
+        holder.titleTextView.setText(list.get(position).getTitle());
         holder.descriptionTextView.setText(list.get(position).getDescription());
-
     }
 
     @Override
