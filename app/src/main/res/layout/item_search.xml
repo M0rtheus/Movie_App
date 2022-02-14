@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/darker_grey"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    app:cardPreventCornerOverlap="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/SearchItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/searchImageView"
+            android:layout_width="168dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/searchTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Movie Title"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/searchImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/searchDescriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="(2010) (Video)"
+            android:textColor="@color/darker_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/searchImageView"
+            app:layout_constraintTop_toBottomOf="@+id/searchTitleTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
