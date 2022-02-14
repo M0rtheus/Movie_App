@@ -1,5 +1,5 @@
-<!-- ABOUT THE PROJECT -->
-## About The Project
+
+## Screenshots
 
 <p float="left">
 <img src="https://github.com/M0rtheus/Movie_App/blob/master/images/device-2022-02-14-211250.png" width="180" height="360">
@@ -15,8 +15,8 @@
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
-## Getting Started
+
+## About the project
 
 This is an example
 
